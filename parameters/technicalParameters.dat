@@ -1,0 +1,29 @@
+# ------------------------------------------------------------------------------
+holdData_Every=1 # [km]
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+plotGraphs= 1 # Valid only (0 || 1)
+
+plotGraphs_diagonalRhoAllEnergy_2distance=1 # Valid for (0 || 1), (plotGraphs= 1)
+plotGraphs_diagonalRhoFinal_2energy=1       # Valid for (0 || 1), (plotGraphs= 1)
+plotGraphs_hamiltonianAllEnergy_2distance=1 # Valid for (0 || 1), (plotGraphs= 1)
+
+plot_savingFormat=png # Valid for (png,rgba,eps,svgz,pgf,ps,raw,svg,pdf), (plotGraphs= 1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+output_distanceHamiltonianAllE=1  # Valid only (0 || 1)
+output_distance_eigenValuesAllE=1 # Valid only (0 || 1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+output_humanReadable=1 # Valid only (0 || 1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+initialValueProblem_solverMethod=LSODA # Valid for (RK45,RK23,BDF,LSODA)
+
+tolerance_relativeError=0 # (0=> default)
+tolerance_absoluteError=0 # (0=> default)
+# ------------------------------------------------------------------------------

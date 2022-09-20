@@ -1,0 +1,127 @@
+# ==============================================================================
+# !! Descriptions are at the end of document !!
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+hamiltonian_oscillation=1                 # Valid only (0 || 1)
+hamiltonian_matter=1                      # Valid only (0 || 1)
+hamiltonian_selfInteraction_singleAngle=0 # Valid only (0 || 1)
+hamiltonian_electromagnetic=1             # Valid only (0 || 1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+flavor_number=2       # Valid only (2, 3, 4) => 2(e,x), 3(e,mu,tau), 4(e,mu,tau,sterile)
+neutrino_hierarchy=1 # Valid only (1 normal, -1 inverted)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+theta12=0.146         # [Radian] Valid for (flavor_number=2,3,4) , (hamiltonian_oscillation=1)
+theta23=0.146         # [Radian] Valid for (flavor_number=3,4) , (hamiltonian_oscillation=1)
+theta13=0             # [Radian] Valid for (flavor_number=3,4) , (hamiltonian_oscillation=1)
+theta_14=0            # [Radian] Valid for (flavor_number=4) , (hamiltonian_oscillation=1)
+theta_24=0            # [Radian] Valid for (flavor_number=4) , (hamiltonian_oscillation=1)
+theta_34=0            # [Radian] Valid for (flavor_number=4) , (hamiltonian_oscillation=1)
+CP_Phase=0            # [Radian] , (hamiltonian_oscillation=1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+deltaM_square21=2.56e-15  # [MeV^2] Valid for (flavor_number=2,3,4)
+deltaM_square32=2.40e-13  # [MeV^2] Valid for (flavor_number=3,4)
+deltaM_square41=0         # [MeV^2] Valid for (flavor_number=4)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+neutrino_MagneticMoment=1e-15 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+numberOf_energyMode=1 # Valid for only integer
+energy_initial=1      # [MeV]
+energy_final=1       # [MeV]
+distance_initial=50.03995115698231   # [km]
+distance_final=3200    # [km]
+neutrino_distributionParameter=7 # Valid only (1,2,3,4,5,6,7), For profiles see below
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Neutrinos
+luminosity_e=1e+52        # [erg/s] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2,5)
+luminosity_mu=1e+52       # [erg/s] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2,5)
+luminosity_tau=1e+52      # [erg/s] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2,5)
+luminosity_sterile=1e+52  # [erg/s] Valid for (flavor_number=4, neutrino_densityParameter=1,2,5)
+
+# Antineutrinos
+luminosity_eb=1e+52       # [erg/s] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2,5)
+luminosity_mub=1e+52      # [erg/s] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2,5)
+luminosity_taub=1e+52     # [erg/s] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2,5)
+luminosity_sterileb=1e+52 # [erg/s] Valid for (flavor_number=4, neutrino_densityParameter=1,2,5)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Neutrinos
+temperature_e=3        # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_mu=6       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_tau=6      # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)
+temperature_sterile=0  # [MeV] Valid for (flavor_number=4, neutrino_densityParameter=1,2)
+
+# Antineutrinos
+temperature_eb=4       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_mub=6      # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_taub=6     # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)   
+temperature_sterileb=0 # [MeV] Valid for (flavor_number=4, neutrino_densityParameter=1,2)
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+use_defaultMatterProfile=1         # Valid for (0 || 1), (hamiltonian_matter=1)
+matterDensity_profile=1            # Valid for only (0,1,2) => (Constant, exponential, polynomial) (use_defaultMatterProfile=1)
+matterDensity_initial=1.8e+7       # [g/cm^3] Valid for (use_defaultMatterProfile=1)
+matterDensity_exponentialDecay=200 # [km] Valid for (use_defaultMatterProfile=1, matterDensity_profile=1)
+matterDensity_polynomialDecay=3    # Valid for (use_defaultMatterProfile=1, matterDensity_profile=2)
+electronFraction_constant=0.45     # Valid for (use_defaultMatterProfile=1)
+
+matterProfile_fileName=exampleProfile.dat # Valid for (use_defaultMatterProfile=0) It must be under "backgroundProfiles" folder.
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+use_defaultMagneticProfile=1             # Valid for (0 || 1), (hamiltonian_electromagnetic=1)
+magneticField_profile=2                  # Valid for only (0,1,2) => (Constant, exponential, polynomial) (use_defaultMagneticProfile=1)
+magneticField_initial=1e+15              # [Gauss] Valid for (hamiltonian_electromagnetic=1, use_defaultMagneticProfile=1)
+magneticField_exponentialDecay=200       # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=1)
+magneticField_polynomialDecayPower=2     # Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
+magneticField_polynomialDecayDistance=49.977992853062304 # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
+
+magneticField_fileName=magneticField_profile.dat # Valid for (use_defaultMagneticProfile=0).
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+couplingConstant_sterile=1 # [Fermi_Constant] Valid for (flavor_number=4, hamiltonian_selfInteraction_singleAngle=1)
+# ------------------------------------------------------------------------------
+
+# ==============================================================================
+#  !!!!!!!!!!!!!!!!!!!!!!
+#  WARNINGS
+#  - Lines starting with "#" are ignored.
+#  - The format is "label=value".
+#  - Some parameters are valid for only specific values! Look descriptions.
+#  - Use 1.2e+4 format instead of 1.2*1e+4.
+#  - If you want to add a new Parameter, add the parameter name into readFiles.py.
+#  - For two flavor, code does not consider some variables. Look descriptions.
+#  - Use dot (.) for decimal, not comma (,).
+#  !!!!!!!!!!!!!!!!!!!!
+#
+#  -----------------------------------------------------------------------------
+#  neutrino_distributionParameter : Normalized Neutrino Densities Parameter
+#   - Valid only 1 || 2 || 3 || 4 || 5 || 6 || 7
+#   - For 1 || 2 => \rho = (Distribution x (L/E) x (1/(4\pi^2 SN_R^{2})))/ (Diagonal_Term)
+#   - For 1 || 2 => Diagonal_Term is for normalization.
+#   - For 2 => alpha = 3
+#
+#  [1] Fermi-Dirac [1/MeV] : (1/(T^3))*(1/F2)*(E^2/(1+exp(E/T))) [Duan:2006an]
+#  [2] Pinched     [1/MeV] : (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]
+#  [3] eBox        []      : Electron neutrino and electron antineutrino box spectrum
+#  [4] muBox       []      : Muon neutrino and muon antineutrino box spectrum
+#  [5] Fermi, Zero [1/MeV] : Actives: Fermi-Dirac Dist., Sterile: Zero
+#  [6] Only eBox    []     : Electron neutrino box spectrum
+#  [7] Only ebarBox []     : Anti Electron neutrino box spectrum
+#  -----------------------------------------------------------------------------
+# ==============================================================================
