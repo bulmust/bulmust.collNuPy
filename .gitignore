@@ -1,2 +1,9 @@
+# Python Caches
+*.pyc
+*__pycache__*/
+
+# Folders to ignore
+backgroundProfiles/
+tmp/
 results/
-parameters/old
+snSimulations/

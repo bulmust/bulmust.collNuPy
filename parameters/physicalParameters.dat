@@ -11,12 +11,12 @@ hamiltonian_electromagnetic=1             # Valid only (0 || 1)
 
 # ------------------------------------------------------------------------------
 flavor_number=2       # Valid only (2, 3, 4) => 2(e,x), 3(e,mu,tau), 4(e,mu,tau,sterile)
-neutrino_hierarchy=1 # Valid only (1 normal, -1 inverted)
+neutrino_hierarchy=1  # Valid only (1 normal, -1 inverted)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 theta12=0.146         # [Radian] Valid for (flavor_number=2,3,4) , (hamiltonian_oscillation=1)
-theta23=0.146         # [Radian] Valid for (flavor_number=3,4) , (hamiltonian_oscillation=1)
+theta23=0             # [Radian] Valid for (flavor_number=3,4) , (hamiltonian_oscillation=1)
 theta13=0             # [Radian] Valid for (flavor_number=3,4) , (hamiltonian_oscillation=1)
 theta_14=0            # [Radian] Valid for (flavor_number=4) , (hamiltonian_oscillation=1)
 theta_24=0            # [Radian] Valid for (flavor_number=4) , (hamiltonian_oscillation=1)
@@ -26,20 +26,20 @@ CP_Phase=0            # [Radian] , (hamiltonian_oscillation=1)
 
 # ------------------------------------------------------------------------------
 deltaM_square21=2.56e-15  # [MeV^2] Valid for (flavor_number=2,3,4)
-deltaM_square32=2.40e-13  # [MeV^2] Valid for (flavor_number=3,4)
+deltaM_square32=0         # [MeV^2] Valid for (flavor_number=3,4)
 deltaM_square41=0         # [MeV^2] Valid for (flavor_number=4)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-neutrino_MagneticMoment=1e-15 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
+neutrino_MagneticMoment=5e-15 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-numberOf_energyMode=1 # Valid for only integer
-energy_initial=1      # [MeV]
-energy_final=1       # [MeV]
-distance_initial=50.03995115698231   # [km]
-distance_final=3200    # [km]
+numberOf_energyMode=1  # Valid for only integer
+energy_initial=1.0  # [MeV]
+energy_final=1.0  # [MeV]
+distance_initial=49.972151143341506  # [km]
+distance_final=54    # [km]
 neutrino_distributionParameter=7 # Valid only (1,2,3,4,5,6,7), For profiles see below
 # ------------------------------------------------------------------------------
 
@@ -72,14 +72,14 @@ temperature_sterileb=0 # [MeV] Valid for (flavor_number=4, neutrino_densityParam
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-use_defaultMatterProfile=1         # Valid for (0 || 1), (hamiltonian_matter=1)
+use_defaultMatterProfile=0         # Valid for (0 || 1), (hamiltonian_matter=1)
 matterDensity_profile=1            # Valid for only (0,1,2) => (Constant, exponential, polynomial) (use_defaultMatterProfile=1)
 matterDensity_initial=1.8e+7       # [g/cm^3] Valid for (use_defaultMatterProfile=1)
 matterDensity_exponentialDecay=200 # [km] Valid for (use_defaultMatterProfile=1, matterDensity_profile=1)
 matterDensity_polynomialDecay=3    # Valid for (use_defaultMatterProfile=1, matterDensity_profile=2)
 electronFraction_constant=0.45     # Valid for (use_defaultMatterProfile=1)
 
-matterProfile_fileName=exampleProfile.dat # Valid for (use_defaultMatterProfile=0) It must be under "backgroundProfiles" folder.
+matterProfile_fileName=SN_distCM_Ye_Nb_g_cm3_t5.0s.dat # Valid for (use_defaultMatterProfile=0) It must be under "backgroundProfiles" folder.
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ magneticField_profile=2                  # Valid for only (0,1,2) => (Constant, 
 magneticField_initial=1e+15              # [Gauss] Valid for (hamiltonian_electromagnetic=1, use_defaultMagneticProfile=1)
 magneticField_exponentialDecay=200       # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=1)
 magneticField_polynomialDecayPower=2     # Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
-magneticField_polynomialDecayDistance=49.977992853062304 # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
+magneticField_polynomialDecayDistance=49.9954430063595 # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
 
 magneticField_fileName=magneticField_profile.dat # Valid for (use_defaultMagneticProfile=0).
 # ------------------------------------------------------------------------------

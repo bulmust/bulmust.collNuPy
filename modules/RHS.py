@@ -12,7 +12,7 @@ import hamilt as hamil
 # ============================
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -22,6 +22,20 @@ class tLog:
 # ============================
 # RHS For Neutrinos f(r,rho) !!Only LSODA!!
 # Two Flavor
+def rhs2Flav_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian(rhoAll, dist).totalHam2Flav_km_1()
+    # rhoAll must be in the form of [2, energyMod, totFlav*2, totFlav*2]
+
+    # Total Hamiltionian (totHam) [2, energyMod, totFlav, totFlav]
+    # For neutrinos     -> totHam[0]
+    # For antineutrinos -> totHam[1]
+
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+    return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
+        , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
 def rhs2Flav(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -38,10 +52,10 @@ def rhs2Flav(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -58,6 +72,20 @@ def rhs2Flav(rhoAll, dist):
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
 # Three Flavor
+def rhs3Flav_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian(rhoAll, dist).totalHam3Flav_km_1()
+    # rhoAll must be in the form of [2, energyMod, totFlav*2, totFlav*2]
+
+    # Total Hamiltionian (totHam) [2, energyMod, totFlav, totFlav]
+    # For neutrinos     -> totHam[0]
+    # For antineutrinos -> totHam[1]
+
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+    return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
+        , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
 def rhs3Flav(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -74,10 +102,10 @@ def rhs3Flav(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -94,6 +122,20 @@ def rhs3Flav(rhoAll, dist):
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
 # Four Flavor
+def rhs4Flav_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian(rhoAll, dist).totalHam4Flav_km_1()
+    # rhoAll must be in the form of [2, energyMod, totFlav*2, totFlav*2]
+
+    # Total Hamiltionian (totHam) [2, energyMod, totFlav, totFlav]
+    # For neutrinos     -> totHam[0]
+    # For antineutrinos -> totHam[1]
+
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+    return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
+        , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
 def rhs4Flav(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -110,10 +152,10 @@ def rhs4Flav(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -134,6 +176,20 @@ def rhs4Flav(rhoAll, dist):
 # ============================
 # RHS For Neutrinos f(r,rho) !!Only LSODA!!
 # Two Flavor
+def rhs2Flav_bigRho_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian_BigRho(rhoAll, dist).totalHam2Flav_km_1()
+    # rhoAll must be in the form of [energyMod, totFlav*2, totFlav*2]
+    # Total Hamiltionian (totHam) [energyMod,totFlav*2,totFlav*2]
+    # totHam[N,0:totFlav,0:totFlav] => Neutrinos
+    # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
+    # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
+    
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+
+    return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 def rhs2Flav_bigRho(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -150,10 +206,10 @@ def rhs2Flav_bigRho(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -170,6 +226,20 @@ def rhs2Flav_bigRho(rhoAll, dist):
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 # Three Flavor
+def rhs3Flav_bigRho_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian_BigRho(rhoAll, dist).totalHam3Flav_km_1()
+    # rhoAll must be in the form of [energyMod, totFlav*2, totFlav*2]
+    # Total Hamiltionian (totHam) [energyMod,totFlav*2,totFlav*2]
+    # totHam[N,0:totFlav,0:totFlav] => Neutrinos
+    # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
+    # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
+    
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+
+    return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 def rhs3Flav_bigRho(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -186,10 +256,10 @@ def rhs3Flav_bigRho(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -206,6 +276,20 @@ def rhs3Flav_bigRho(rhoAll, dist):
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 # Four Flavor
+def rhs4Flav_bigRho_noInterData(rhoAll, dist):
+    # ============================
+    # Define the RHS
+    totHamAP = hamil.hamiltonian_BigRho(rhoAll, dist).totalHam4Flav_km_1()
+    # rhoAll must be in the form of [energyMod, totFlav*2, totFlav*2]
+    # Total Hamiltionian (totHam) [energyMod,totFlav*2,totFlav*2]
+    # totHam[N,0:totFlav,0:totFlav] => Neutrinos
+    # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
+    # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
+    
+    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Take Commutator of density and Hamiltonian for each energy
+
+    return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 def rhs4Flav_bigRho(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
@@ -222,10 +306,10 @@ def rhs4Flav_bigRho(rhoAll, dist):
         # To show current time
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
-        # Do not color the [STATUS]
+        # Do not color the [INFO]
         print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.STATUS+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================

@@ -1,24 +1,25 @@
 # ------------------------------------------------------------------------------
-holdData_Every=1 # [km]
+holdData_Every=10 # [km]
+holdIntermediateData=1 # Valid for (0 || 1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 plotGraphs= 1 # Valid only (0 || 1)
 
 plotGraphs_diagonalRhoAllEnergy_2distance=1 # Valid for (0 || 1), (plotGraphs= 1)
-plotGraphs_diagonalRhoFinal_2energy=1       # Valid for (0 || 1), (plotGraphs= 1)
-plotGraphs_hamiltonianAllEnergy_2distance=1 # Valid for (0 || 1), (plotGraphs= 1)
+plotGraphs_diagonalRhoFinal_2energy=0       # Valid for (0 || 1), (plotGraphs= 1)
+plotGraphs_hamiltonianAllEnergy_2distance=0 # Valid for (0 || 1), (plotGraphs= 1)
 
 plot_savingFormat=png # Valid for (png,rgba,eps,svgz,pgf,ps,raw,svg,pdf), (plotGraphs= 1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 output_distanceHamiltonianAllE=1  # Valid only (0 || 1)
-output_distance_eigenValuesAllE=1 # Valid only (0 || 1)
+output_distance_eigenValuesAllE=0 # Valid only (0 || 1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-output_humanReadable=1 # Valid only (0 || 1)
+output_humanReadable=0 # Valid only (0 || 1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------

@@ -33,7 +33,7 @@ import plotgraphs as plot
 # ============================
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         osCommand.makedirs(RESULTS_DIR)
         print(tLog.OK+"Results Folder Created.")
     else:
-        print(tLog.STATUS+"Results Folder Already Exists.")
+        print(tLog.INFO+"Results Folder Already Exists.")
     # ============================
 
     # ============================
@@ -95,14 +95,14 @@ if __name__ == "__main__":
 
     # ============================
     # Save final human readable data
-    # TODO: Comment out print after wrote the functions
+    # TODO: Comment out print after you wrote the functions
     if init.technicalParametersDic['output_humanReadable']:
         DATA_FOLDER_TXT= RESULTS_SIMULATION_DIR+ 'data/txt/'
         if not osCommand.path.exists(DATA_FOLDER_TXT):
             osCommand.makedirs(DATA_FOLDER_TXT)
             print(tLog.OK+"TXT Data Folder Created.")
         else:
-            print(tLog.STATUS+"TXT Data Folder Already Exists.")
+            print(tLog.INFO+"TXT Data Folder Already Exists.")
         # ============================
         # rhoFlavAll.txt
         write2file.rhoFlavAll_txt(init,DATA_FOLDER_TXT+'rhoFlavAll.txt', rhoFlavAll)
@@ -119,6 +119,11 @@ if __name__ == "__main__":
             # Eigenvalues eigenvalues.txt
             write2file.eigVal_eigVec_txt(init, DATA_FOLDER_TXT+'eigVal_eigVec.txt', rhoFlavAll)
             #print(tLog.OK+"Saved: eigVal_eigVec.txt.")
+    # ============================
+
+    # ============================
+    # Copy background profile file(s)
+    write2file.saveBackgroundProfiles(init, COLLECTIVE_NU_OSC_DIR+'backgroundProfiles/', DATA_FOLDER_NPZ)
     # ============================
 
     # ============================
@@ -142,6 +147,6 @@ if __name__ == "__main__":
     osCommand.system('find . | grep -E "(__pycache__|.pyc|.pyo$)" | xargs rm -rf')
     print(tLog.OK+"Unused Files and Folders Removed.")
     #! ============================
-    print(tLog.STATUS+'[FINISHED] =====> simulation'+str(simNum)+' <===== [FINISHED]\n')
+    print(tLog.INFO+'[FINISHED] =====> simulation'+str(simNum)+' <===== [FINISHED]\n')
     exit()
 # ============================

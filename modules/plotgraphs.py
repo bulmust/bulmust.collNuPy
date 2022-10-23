@@ -7,7 +7,7 @@ import os as osCommand # File operations
 # ============================
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -61,7 +61,7 @@ class plotMain:
             osCommand.makedirs(self.FIGURE_PATH)
             print(tLog.OK+"figures Folder Created.")
         else:
-            print(tLog.STATUS+"figures Folder Already Exists.")
+            print(tLog.INFO+"figures Folder Already Exists.")
     # ============================
 
     # ============================
@@ -120,7 +120,7 @@ class plotMain:
             osCommand.makedirs(FIG_DISTDIAG_PATH)
             print(tLog.OK+"figures/distDiag/ Folder Created.")
         else:
-            print(tLog.STATUS+"figures/distDiag/ Folder Already Exists.")
+            print(tLog.INFO+"figures/distDiag/ Folder Already Exists.")
 
         # Create Y Axises
         yAxises = np.zeros((len(self.distAll_km), self.Emod, self.totFlav*2))
@@ -157,7 +157,10 @@ class plotMain:
 
             # Clear Figure
             plt.clf()
-            plt.close('all')     
+            plt.close('all')
+    # ============================
+    print(tLog.OK+"Diagonal elements of density matrix to distance graph(s) for each energy are created.")
+    # ============================
     def energyDiag(self):
         # Paths
         FIG_DISTDIAG_PATH = self.FIGURE_PATH+'energyDiag/'
@@ -165,7 +168,7 @@ class plotMain:
             osCommand.makedirs(FIG_DISTDIAG_PATH)
             print(tLog.OK+"figures/energyDiag/ Folder Created.")
         else:
-            print(tLog.STATUS+"figures/energyDiag/ Folder Already Exists.")
+            print(tLog.INFO+"figures/energyDiag/ Folder Already Exists.")
 
         # Create Y Axises
         yAxisesBeg = np.zeros((self.Emod, self.totFlav*2))
@@ -214,6 +217,7 @@ class plotMain:
         # Clear Figure
         plt.clf()
         plt.close('all')
+        print(tLog.OK+"Diagonal elements of final density matrix to energy graph(s) are created.")
     def distHamiltDiag(self):
         # ============================
         # hamiltonians.npz load
@@ -232,7 +236,7 @@ class plotMain:
             osCommand.makedirs(FIG_DISTDIAG_PATH)
             print(tLog.OK+"figures/distHamiltDiag/ Folder Created.")
         else:
-            print(tLog.STATUS+"figures/distHamiltDiag/ Folder Already Exists.")
+            print(tLog.INFO+"figures/distHamiltDiag/ Folder Already Exists.")
         # ============================
 
         # ============================
@@ -251,13 +255,14 @@ class plotMain:
                     , color='r'\
                     , alpha=0.4)
             # Labels
-            plt.ylabel('$H_{osc}(0,0)$ [km$^{-1}$]')
+            plt.ylabel('$H_{osc}(1,1)$ [km$^{-1}$]')
             plt.xlabel('Distance [km]')
             # Save The Graph
             plt.savefig(FIG_DISTDIAG_PATH+'distHamiltDiag_Osc.'+self.pltFormat)
             # Clear Figure
             plt.clf()
             plt.close('all')
+            print(tLog.OK+"(0,0) elements of oscillation Hamiltonian (km^-1) to distance graph(s) for each energy are created.")
         # ============================
         # Matter Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[1]:
@@ -267,7 +272,7 @@ class plotMain:
             plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 1, 1]))), color='r', label='$H_{mat}(2,2)$')
             if self.totFlav == 3:
                 plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 2, 2]))), color='b', label='$H_{mat}(3,3)$')
-            plt.ylabel('$H_{mat}(0,0)$ [km$^{-1}$]')
+            plt.ylabel('$H_{mat}$ [km$^{-1}$]')
             # Labels and legend
             plt.xlabel('Distance [km]')
             plt.legend(loc = 'upper right')
@@ -276,6 +281,7 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
+            print(tLog.OK+"(0,0), (1,1) elements of matter Hamiltonian (km^-1) to distance graph(s) are created.")
         # ============================
         # EM Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[2]:
@@ -291,13 +297,14 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
+            print(tLog.OK+"(0,-1) elements of electromagnetic Hamiltonian (km^-1) or muB to distance graph(s) are created.")
         # ============================
         # SelfSA Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[3]:
             hamSelfSA_km_1= hamiltonians_npz['hamSelfSA_km_1']
             # Plot
-            plt.plot(self.distAll_km, (np.abs(np.real(hamSelfSA_km_1[:, 0, 0]))), color='k', label='$H_{mat}(0,0)$')
-            plt.ylabel('$H_{mat}(0,0)$ [km$^{-1}$]')
+            plt.plot(self.distAll_km, (np.abs(np.real(hamSelfSA_km_1[:, 0, 0]))), color='k', label='$H_{self}(1,1)$')
+            plt.ylabel('$H_{self}(1,1)$ [km$^{-1}$]')
             # Labels and legend
             plt.xlabel('Distance [km]')
             plt.legend(loc = 'upper right')
@@ -306,4 +313,5 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
+            print(tLog.OK+"(0,0) elements of self interaction Hamiltonian (km^-1) to distance graph(s) are created.")
     # ============================

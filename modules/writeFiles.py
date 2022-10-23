@@ -6,10 +6,11 @@ E-Mail  : bulmust@gmail.com
 """
 import numpy as np
 import hamilt as hamil
+from shutil import copy2
 
 # ============================
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -275,3 +276,18 @@ def eigVal_eigVec_txt(init, fullFilePath, rhoFlavAll):
     print(tLog.ERROR+'eigVal_eigVec.txt file not implemented yet.')
 # ============================
 
+# ============================
+# Save Background Profile
+def saveBackgroundProfiles(init, backgroundFolderPath, saveFolderPath):
+    # Do you use default background profile?
+    if not init.physicalParametersDic['use_defaultMatterProfile']:
+        matterProfile_fileName= str(init.physicalParametersDic['matterProfile_fileName'][:-1])
+        # Save file
+        copy2(backgroundFolderPath+matterProfile_fileName, saveFolderPath)
+        print(tLog.INFO+'Matter background profile file is copied to: '+saveFolderPath)
+    if not init.physicalParametersDic['use_defaultMagneticProfile']:
+        magneticProfile_fileName= str(init.physicalParametersDic['magneticProfile_fileName'][:-1])
+        # Save file
+        copy2(backgroundFolderPath+magneticProfile_fileName, saveFolderPath)
+        print(tLog.INFO+'EM background profile file is copied to: '+saveFolderPath)
+# ============================

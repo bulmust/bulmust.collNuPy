@@ -7,7 +7,7 @@ E-Mail  : bulmust@gmail.com
 import numpy as np
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -36,6 +36,7 @@ def technicalParameters_read():
     # With Number Comment
     # Same for two and three flavor
     technicalParametersNames= ('holdData_Every',
+        'holdIntermediateData',
         'plotGraphs',
         'plotGraphs_diagonalRhoAllEnergy_2distance',
         'plotGraphs_diagonalRhoFinal_2energy',
@@ -49,7 +50,7 @@ def technicalParameters_read():
         'tolerance_absoluteError')
 
     # If parameters' value must be 0 or 1, add their indexes below
-    err01=('plotGraphs','plotGraphs_diagonalRhoAllEnergy_2distance','plotGraphs_diagonalRhoFinal_2energy'\
+    err01=('holdIntermediateData','plotGraphs','plotGraphs_diagonalRhoAllEnergy_2distance','plotGraphs_diagonalRhoFinal_2energy'\
         ,'plotGraphs_hamiltonianAllEnergy_2distance'\
         ,'output_humanReadable','output_distanceHamiltonianAllE', 'output_distance_eigenValuesAllE')
 

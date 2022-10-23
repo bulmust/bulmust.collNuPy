@@ -15,7 +15,7 @@ from unitConv import erg_s_TO_MeV_km, muB_TO_Gauss__km
 # ============================
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -58,7 +58,7 @@ nuDistParam= physicalParametersDic['neutrino_distributionParameter']
 #! ============================
 if not sterileBool and nuDistParam == 5:
     # ERROR Sterile neutrinos are not considered, but neutrino_distributionParameter=5
-    print(tLog.STATUS+'Sterile neutrinos are not considered, but neutrino_distributionParameter=5.')
+    print(tLog.INFO+'Sterile neutrinos are not considered, but neutrino_distributionParameter=5.')
     exit(tLog.EXIT)
 elif sterileBool and nuDistParam != 5:
     # WARNING 
@@ -255,12 +255,12 @@ elif flavNum == 4:
 # ERROR Temperature Errors
 if 0 in tempArray_MeV and nuDistParam != 5:
     if nuDistParam == 1:
-        print(tLog.STATUS+'Fermi Dirac Distribution: (E^2)/(F_2(0) T^3 (exp(E/T) +1)) <== [Duan:2006an] eqn (12)')
+        print(tLog.INFO+'Fermi Dirac Distribution: (E^2)/(F_2(0) T^3 (exp(E/T) +1)) <== [Duan:2006an] eqn (12)')
         print(tLog.ERROR+'Temperature of one of the neutrinos is zero. Any of temperatures can not be zero '
                       'for Fermi Dirac Distribution.')
         exit(tLog.EXIT)
     elif nuDistParam == 2:
-        print(tLog.STATUS+'Pinched Dirac Distribution: (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]')
+        print(tLog.INFO+'Pinched Dirac Distribution: (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]')
         print(tLog.ERROR+'Temperature of one of the neutrinos is zero. Any of temperatures can not be zero '
                       'for Pinched Dirac Distribution.')
         exit(tLog.EXIT)
@@ -271,7 +271,7 @@ if nuDistParam == 5:
         or physicalParametersDic['temperature_eb'] == 0\
         or physicalParametersDic['temperature_mub'] == 0\
         or physicalParametersDic['temperature_taub'] == 0:
-        print(tLog.STATUS+'Fermi Dirac Distribution: (E^2)/(F_2(0) T^3 (exp(E/T) +1)) <== [Duan:2006an] eqn (12)')
+        print(tLog.INFO+'Fermi Dirac Distribution: (E^2)/(F_2(0) T^3 (exp(E/T) +1)) <== [Duan:2006an] eqn (12)')
         print(tLog.ERROR+'Temperature of one of the active neutrinos is zero. Any of temperatures can not be zero '
                     'for Fermi Dirac Distribution.')
         exit(tLog.EXIT)

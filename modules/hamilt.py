@@ -16,7 +16,7 @@ from scipy.integrate import simps
 # ============================
 # Colors For Printing
 class tLog:
-    STATUS  = '\033[94m'+'[STATUS]    '+'\033[0m'
+    INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
     OK      = '\033[92m'+'[OK]        '+'\033[0m'
     WARNING = '\033[93m'+'[WARNING]   '+'\033[0m'
     ERROR   = '\033[91m'+'[ERROR]     '+'\033[0m'
@@ -125,8 +125,9 @@ if init.hamMat:
             
             # ============================
             # Interpolate n_baryon and Y_e w.r.t red distance
-            nBaryon_1_km3_LAMBDA = interp1d(distRead_km, tmp0, kind='linear'); del tmp0
-            Y_e_LAMBDA = interp1d(distRead_km, tmp1, kind='linear'); del tmp1
+            Y_e_LAMBDA = interp1d(distRead_km, tmp0, kind='linear'); del tmp0
+            nBaryon_1_km3_LAMBDA = interp1d(distRead_km, tmp1, kind='linear'); del tmp1
+            
         else:
             print(tLog.ERROR+'The file '+SN_MATTER_PROFILE_DATA_DIR+'does not exist.')
             print(tLog.ERROR+'Please check the file name and path.')
@@ -184,6 +185,7 @@ if init.hamEM:
 # ============================
 
 # ============================
+# If dimension is totFlav x totFlav
 class hamiltonian:
     # ============================
     # Variables

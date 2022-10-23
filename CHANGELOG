@@ -1,0 +1,13 @@
+# v1.1
+- Updated gitignore.
+- Converted `plotgraphsScript.sh` to python script (`plotGraphsAfterSimulation.py`). Remove `plotgraphsScript.sh`.
+- Added scripts;
+  1. SN post baryon density generator script from preSN file with added shockwave (`create_SN_tXsdat.py`).
+  2. Run script for random `ri_km` and `magneticField_polynomialDecayDistance` (`run_random_ri_magPolDecDist.py`).
+- Added `holdIntermediateData` option to technical parameters `technicalParameters.dat`.
+  - Added new functions without holding intermediate data `RHS.py`.
+  - Adopted `diffSolvers.py` for new `holdIntermediateData` variable.
+- Fixed in matter hamiltonian (wrong assignment of Ye and nb when reading data from a file.)
+- Minor changes in `plotgraphs.py`.
+- Add function to copy background profile to results folder (`writeFiles.py`, `collnuPy.py`).
+- Change all "STATUS" strings/variables to "INFO" in all code.
