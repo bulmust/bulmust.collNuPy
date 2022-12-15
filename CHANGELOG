@@ -1,3 +1,10 @@
+# v1.2
+- Spell check.
+- Create `analyze_random_ri_magPolDecDist.py` script.
+- Change `run_random_ri_magPolDecDist.py` script.
+  - Add `-b` option to specify the number of number of energy mod for each energy.
+- Add SLURM scripts `submitTRUBA_collNuPy.sh` and `submitTRUBA_run_random_ri_magPolDecDist.sh`.
+  
 # v1.1
 - Updated gitignore.
 - Converted `plotgraphsScript.sh` to python script (`plotGraphsAfterSimulation.py`). Remove `plotgraphsScript.sh`.

@@ -31,16 +31,16 @@ deltaM_square41=0         # [MeV^2] Valid for (flavor_number=4)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-neutrino_MagneticMoment=5e-15 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
+neutrino_MagneticMoment=5e-14 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-numberOf_energyMode=1  # Valid for only integer
-energy_initial=1.0  # [MeV]
-energy_final=1.0  # [MeV]
-distance_initial=49.972151143341506  # [km]
-distance_final=54    # [km]
-neutrino_distributionParameter=7 # Valid only (1,2,3,4,5,6,7), For profiles see below
+numberOf_energyMode=21             # Valid for only integer
+energy_initial=1.0                 # [MeV]
+energy_final=20.0                  # [MeV]
+distance_initial=50                # [km]
+distance_final=200                 # [km]
+neutrino_distributionParameter=1 # Valid only (1,2,3,4,5,6,7), For profiles see below
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
@@ -60,14 +60,14 @@ luminosity_sterileb=1e+52 # [erg/s] Valid for (flavor_number=4, neutrino_density
 # ------------------------------------------------------------------------------
 # Neutrinos
 temperature_e=3        # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
-temperature_mu=6       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
-temperature_tau=6      # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)
+temperature_mu=7       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_tau=7      # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)
 temperature_sterile=0  # [MeV] Valid for (flavor_number=4, neutrino_densityParameter=1,2)
 
 # Antineutrinos
-temperature_eb=4       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
-temperature_mub=6      # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
-temperature_taub=6     # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)   
+temperature_eb=5       # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_mub=7      # [MeV] Valid for (flavor_number=2,3,4, neutrino_densityParameter=1,2)
+temperature_taub=7     # [MeV] Valid for (flavor_number=3,4, neutrino_densityParameter=1,2)   
 temperature_sterileb=0 # [MeV] Valid for (flavor_number=4, neutrino_densityParameter=1,2)
 # ------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ magneticField_profile=2                  # Valid for only (0,1,2) => (Constant, 
 magneticField_initial=1e+15              # [Gauss] Valid for (hamiltonian_electromagnetic=1, use_defaultMagneticProfile=1)
 magneticField_exponentialDecay=200       # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=1)
 magneticField_polynomialDecayPower=2     # Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
-magneticField_polynomialDecayDistance=49.9954430063595 # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
+magneticField_polynomialDecayDistance=50 # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)
 
 magneticField_fileName=magneticField_profile.dat # Valid for (use_defaultMagneticProfile=0).
 # ------------------------------------------------------------------------------
@@ -116,12 +116,12 @@ couplingConstant_sterile=1 # [Fermi_Constant] Valid for (flavor_number=4, hamilt
 #   - For 1 || 2 => Diagonal_Term is for normalization.
 #   - For 2 => alpha = 3
 #
-#  [1] Fermi-Dirac [1/MeV] : (1/(T^3))*(1/F2)*(E^2/(1+exp(E/T))) [Duan:2006an]
-#  [2] Pinched     [1/MeV] : (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]
-#  [3] eBox        []      : Electron neutrino and electron antineutrino box spectrum
-#  [4] muBox       []      : Muon neutrino and muon antineutrino box spectrum
-#  [5] Fermi, Zero [1/MeV] : Actives: Fermi-Dirac Dist., Sterile: Zero
-#  [6] Only eBox    []     : Electron neutrino box spectrum
-#  [7] Only ebarBox []     : Anti Electron neutrino box spectrum
+#  [1] Fermi-Dirac  [1/MeV] : (1/(T^3))*(1/F2)*(E^2/(1+exp(E/T))) [Duan:2006an]
+#  [2] Pinched      [1/MeV] : (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]
+#  [3] eBox         []      : Electron neutrino and electron antineutrino box spectrum
+#  [4] muBox        []      : Muon neutrino and muon antineutrino box spectrum
+#  [5] Fermi, Zero  [1/MeV] : Actives: Fermi-Dirac Dist., Sterile: Zero
+#  [6] Only eBox    []      : Electron neutrino box spectrum
+#  [7] Only ebarBox []      : Anti Electron neutrino box spectrum
 #  -----------------------------------------------------------------------------
 # ==============================================================================
