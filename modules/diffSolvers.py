@@ -9,7 +9,7 @@ import time
 import datetime
 import os as osCommand
 from shutil import rmtree
-import numpy as np
+#import numpy as np
 import RHS as func
 import odeintw as integralSolver
 
@@ -61,7 +61,9 @@ def odeintwSolver(init, RESULTS_SIMULATION_DIR):
             osCommand.makedirs(INTERMEDIATE_DATA_FOLDER)
             print(tLog.OK+"Intermediate Data Folder Created.")
         else:
-            print(tLog.ERROR+"Intermediate Data Folder Already Exists. Check The Folder: "+ INTERMEDIATE_DATA_FOLDER)
+            print(tLog.ERROR\
+                +"Intermediate Data Folder Already Exists. Check The Folder: "\
+                + INTERMEDIATE_DATA_FOLDER)
             print(tLog.EXIT)
     # Change directory to data 
     # Code saves intermediate data
@@ -75,142 +77,202 @@ def odeintwSolver(init, RESULTS_SIMULATION_DIR):
     # ============================
     # Solve E.o.M.
     # Starting time
-    print(tLog.INFO+'Start solving E.o.M with odeintw. Current date and time :', timeInitialDate.strftime("%Y-%m-%d %H:%M:%S"))
+    print(tLog.INFO+'Start solving E.o.M with odeintw. Current date and time :'\
+        , timeInitialDate.strftime("%Y-%m-%d %H:%M:%S"))
     # Hold intermediate data
     if init.technicalParametersDic['holdIntermediateData']:
         if init.dim_rho_2totFlav_Bool:
             # Default error tolerances
-            if (init.technicalParametersDic['tolerance_relativeError'] == 0 and init.technicalParametersDic['tolerance_absoluteError'] == 0):
+            if (init.technicalParametersDic['tolerance_relativeError'] == 0\
+                and init.technicalParametersDic['tolerance_absoluteError'] == 0):
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_bigRho, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_bigRho, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_bigRho, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_bigRho, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_bigRho, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_bigRho, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
             # User defined error tolerances
             else:
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_bigRho, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_bigRho, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_bigRho, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_bigRho, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_bigRho, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_bigRho, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
         else:
             # Default error tolerances
-            if (init.technicalParametersDic['tolerance_relativeError'] == 0 and init.technicalParametersDic['tolerance_absoluteError'] == 0):
+            if (init.technicalParametersDic['tolerance_relativeError'] == 0\
+                and init.technicalParametersDic['tolerance_absoluteError'] == 0):
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)    
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav, init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)    
             # User defined error tolerances
             else:
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
     else:
         if init.dim_rho_2totFlav_Bool:
             # Default error tolerances
-            if (init.technicalParametersDic['tolerance_relativeError'] == 0 and init.technicalParametersDic['tolerance_absoluteError'] == 0):
+            if (init.technicalParametersDic['tolerance_relativeError'] == 0\
+                and init.technicalParametersDic['tolerance_absoluteError'] == 0):
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_bigRho_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_bigRho_noInterData\
+                        , init.rhoInit_flav, init.distAll_km\
+                        , full_output=True, mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_bigRho_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_bigRho_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_bigRho_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_bigRho_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , mxstep=500000000)
             # User defined error tolerances
             else:
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_bigRho_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_bigRho_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_bigRho_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_bigRho_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_bigRho_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_bigRho_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
         else:
             # Default error tolerances
-            if (init.technicalParametersDic['tolerance_relativeError'] == 0 and init.technicalParametersDic['tolerance_absoluteError'] == 0):
+            if (init.technicalParametersDic['tolerance_relativeError'] == 0\
+                and init.technicalParametersDic['tolerance_absoluteError'] == 0):
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_noInterData, init.rhoInit_flav, init.distAll_km, full_output=True, mxstep=500000000)    
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , mxstep=500000000)    
             # User defined error tolerances
             else:
                 if init.totFlav == 2:
                     # Two Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs2Flav_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs2Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 3:
                     # Three Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs3Flav_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs3Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
                 elif init.totFlav == 4:
                     # Four Flavor
-                    rhoFinalAll,infow = integralSolver.odeintw(func.rhs4Flav_noInterData, init.rhoInit_flav\
-                        , init.distAll_km, full_output=True, rtol=init.technicalParametersDic['tolerance_relativeError']\
+                    rhoFinalAll,infow = integralSolver.odeintw(\
+                        func.rhs4Flav_noInterData, init.rhoInit_flav\
+                        , init.distAll_km, full_output=True\
+                        , rtol=init.technicalParametersDic['tolerance_relativeError']\
                         , atol=init.technicalParametersDic['tolerance_absoluteError']\
                         , mxstep=500000000)
     # ============================  
     
     # ============================  
-    print(tLog.OK+'Finish solving E.o.M with odeintw. Current date and time :', timeInitialDate.strftime("%Y-%m-%d %H:%M:%S"))
+    print(tLog.OK+'Finish solving E.o.M with odeintw. Current date and time :'\
+        , timeInitialDate.strftime("%Y-%m-%d %H:%M:%S"))
     # Stop Calculating time
     timeFinalClock = time.time()
     # ============================
@@ -228,12 +290,14 @@ def odeintwSolver(init, RESULTS_SIMULATION_DIR):
     minutes = tmpTimeCalculation // 60
     tmpTimeCalculation %= 60
     seconds = tmpTimeCalculation
-    print(tLog.INFO+"Total Process Time, %6.2fs,  d:h:m:s : %d:%d:%d:%d"% (tmpTimeCalculationSec, days, hours, minutes, seconds))
+    print(tLog.INFO+"Total Process Time, %6.2fs,  d:h:m:s : %d:%d:%d:%d"% (\
+        tmpTimeCalculationSec, days, hours, minutes, seconds))
     # ============================
     # Save Total Process Time to file
     # Do not color the [INFO]
     fileObject = open('distanceAndTime.log','a+')
-    print('Total Process Time, %6.2fs,  d:h:m:s : %d:%d:%d:%d'% (tmpTimeCalculationSec, days, hours, minutes, seconds), file=fileObject)
+    print('Total Process Time, %6.2fs,  d:h:m:s : %d:%d:%d:%d'% (\
+        tmpTimeCalculationSec, days, hours, minutes, seconds), file=fileObject)
     fileObject.close()
     # ============================
     # Number Of Evolution
@@ -242,10 +306,12 @@ def odeintwSolver(init, RESULTS_SIMULATION_DIR):
     # Check differential equation solver method changed or not
     methodIndicators = infow['mused']
     if methodIndicators[0] == 1:
-        print(tLog.INFO+'Differential equation solver started with adams (nonstiff) method.')
+        print(tLog.INFO+'Differential equation solver started with'\
+            ' Adams (nonstiff) method.')
     else:
         print(tLog.INFO+'Differential equation solver started with bdf (stiff) method.')
-    indicatorChangePrint = [tLog.INFO+'Differential equation solver method is adams (nonstiff)'\
+    indicatorChangePrint = [tLog.INFO\
+        +'Differential equation solver method is Adams (nonstiff)'\
         , tLog.INFO+'Differential equation solver method is bdf   (stiff)   ']
     # ============================
     # If tmpIndicatorCheckControl == 1, the method changed.

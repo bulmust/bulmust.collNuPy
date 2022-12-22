@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import argparse
 from pathlib import Path
 import os as osCommand # File operations
@@ -59,12 +59,13 @@ def create_shockedNb_g_cm3(dataPreSN_PATH, tPostBounce_s):
         exit(tLog.EXIT)
     elif tPostBounce_s >= 1:
         density_shock_g_cm3 = np.zeros((lenData))
-        r_s_km = (-4.6e+3)+ ((11.3e+3)* tPostBounce_s)+ (0.5* (0.2e+3)* tPostBounce_s**2)       
+        r_s_km= (-4.6e+3)+ ((11.3e+3)* tPostBounce_s)+ (0.5* (0.2e+3)* tPostBounce_s**2)
 
         for it1 in range(lenData):
             
             if r_km[it1] <= r_s_km:
-                f_x_function = np.exp(0.28- (0.69* np.log(r_s_km))* ((np.arcsin(1- (r_km[it1]/ r_s_km)))**(1.1)) )           
+                f_x_function = np.exp(0.28- (0.69* np.log(r_s_km))\
+                    * ((np.arcsin(1- (r_km[it1]/ r_s_km)))**(1.1)) )
                     
                 density_shock_g_cm3[it1]=  10* f_x_function* dataSN_t0s[it1, 2]
             elif r_km[it1] > r_s_km:
@@ -82,7 +83,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # Adding optional argument
-    parser.add_argument("-t", "--Time", help= "Time after bounce in seconds", type = float, required=True)
+    parser.add_argument("-t", "--Time", help= "Time after bounce in seconds"\
+        , type = float, required=True)
     parser.add_argument("-p", "--PathSN", help= "Path to PreSN Data", required=True)
     
     # Read arguments from command line
@@ -104,7 +106,8 @@ if __name__ == '__main__':
         print(tLog.ERROR+'Path of PreSN Data is not provided.')
         exit(tLog.EXIT)
     
-    outputPATH= COLLECTIVE_NU_OSC_DIR+"/backgroundProfiles/SN_distCM_Ye_Nb_g_cm3_t"+str(tPostBounce_s)+"s.dat"
+    outputPATH= COLLECTIVE_NU_OSC_DIR+"/backgroundProfiles/SN_distCM_Ye_Nb_g_cm3_t"\
+        + str(tPostBounce_s)+"s.dat"
 
     dataSN_t0s= np.loadtxt(dataPreSN_PATH)
     r_cm= dataSN_t0s[:, 0]

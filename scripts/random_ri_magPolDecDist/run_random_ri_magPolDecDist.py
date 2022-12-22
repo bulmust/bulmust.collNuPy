@@ -14,10 +14,10 @@ import numpy as np
 import random
 import os as osCommand # File operations
 import argparse
+from pathlib import Path
 
 # Current Directory
 currDir = osCommand.getcwd() + "/"
-from pathlib import Path
 # collNuPy main directory
 COLLECTIVE_NU_OSC_DIR= str(Path(str(Path(currDir).parent)+ "/").parent) + '/'
 
@@ -39,7 +39,8 @@ if __name__ =='__main__':
     parser.add_argument("-i", "--Ei_MeV", help= "Initial Energy", type= float)
     parser.add_argument("-f", "--Ef_MeV", help= "Final Energy", type= float)
     parser.add_argument("-m", "--NumberOfMod", help= "Number of Mod", type= int)
-    parser.add_argument("-b", "--NumberOfMod_EachE", help= "Number of Mod For Each Energy", type= int)
+    parser.add_argument("-b", "--NumberOfMod_EachE"\
+        , help= "Number of Mod For Each Energy", type= int)
     # Read arguments from command line
     args = parser.parse_args()
     # Check for --Ei_MeV
@@ -61,13 +62,16 @@ if __name__ =='__main__':
         Emod= int(args.NumberOfMod)
         print(tLog.INFO+'Number of energy mod is ', Emod, '.')
     else:
-        print(tLog.INFO+'Number of energy mod is not given. Using default value of 500.')
+        print(tLog.INFO\
+            +'Number of energy mod is not given. Using default value of 500.')
         Emod= 500
     if args.NumberOfMod_EachE:
         Emod_EachE= int(args.NumberOfMod_EachE)
         print(tLog.INFO+'Number of energy mod for each energy is ', Emod_EachE, '.')
     else:
-        print(tLog.INFO+'Number of energy mod for each energy is not given. Using default value of 1.')
+        print(tLog.INFO\
+            +'Number of energy mod for each energy is not given. '\
+            'Using default value of 1.')
         Emod= 1
     # ============================
 
@@ -86,7 +90,8 @@ if __name__ =='__main__':
 
     # Assign First Values
     ri_km[0]= ri_randStart_km+ 0.1* random.random()
-    magneticField_polynomialDecayDistance[0]= magneticField_polynomialDecayDistance_randStart+ 0.1* random.random()
+    magneticField_polynomialDecayDistance[0]=\
+        magneticField_polynomialDecayDistance_randStart+ 0.1* random.random()
 
     # Create Random ri_km and magneticField_polynomialDecayDistance
     for i1 in range(1, int(Emod)):
@@ -103,9 +108,11 @@ if __name__ =='__main__':
             # ============================
 
             # ============================
-            # Modify New ri_km and magneticField_polynomialDecayDistance in physicalParameters.dat
+            # Modify New ri_km and magneticField_polynomialDecayDistance
+            # in physicalParameters.dat
             file= open(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat', 'r')
-            fileWrite= open(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters2.dat', 'w')
+            fileWrite= open(COLLECTIVE_NU_OSC_DIR\
+                + 'parameters/physicalParameters2.dat', 'w')
             for line in file.readlines():
                 # Energy
                 if (line.startswith('numberOf_energyMode')):
@@ -123,7 +130,10 @@ if __name__ =='__main__':
                     fileWrite.write(line)
                 # magneticField_polynomialDecayDistance
                 elif (line.startswith('magneticField_polynomialDecayDistance')):
-                    line= 'magneticField_polynomialDecayDistance='+ str(magneticField_polynomialDecayDistance)+ ' # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)\n'
+                    line= 'magneticField_polynomialDecayDistance='\
+                        + str(magneticField_polynomialDecayDistance)\
+                        + ' # [km] Valid for (use_defaultMagneticProfile=1, '\
+                        'magneticField_profile=2)\n'
                     fileWrite.write(line)
                 else:
                     fileWrite.write(line)
@@ -131,7 +141,8 @@ if __name__ =='__main__':
             fileWrite.close()
             # Remove and Rename
             osCommand.remove(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
-            osCommand.rename(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters2.dat', COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
+            osCommand.rename(COLLECTIVE_NU_OSC_DIR+'parameters/physicalParameters2.dat'\
+                , COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
             # ============================
             osCommand.chdir(COLLECTIVE_NU_OSC_DIR)
             #! ============================

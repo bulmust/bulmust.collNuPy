@@ -42,7 +42,8 @@ class plotMain:
         self.dim_rho_2totFlav_Bool = rhoFlavAll_npz['dim_rho_2totFlav_Bool']
         # ============================
         # parametersDic_npz load
-        parametersDic_npz = np.load(self.DATA_PATH+'parametersDic.npz','r',allow_pickle=True)
+        parametersDic_npz = np.load(self.DATA_PATH+\
+            'parametersDic.npz','r',allow_pickle=True)
         # Assign Data
         #print(parametersDic_npz.files)
         
@@ -52,8 +53,10 @@ class plotMain:
 
         # technicalParameters.dat
         self.pltFormat = str(parametersDic_npz['plot_savingFormat'])
-        self.output_distanceHamiltonianAllE= parametersDic_npz['output_distanceHamiltonianAllE']
-        self.plotGraphs_hamiltonianAllEnergy_2distance= parametersDic_npz['plotGraphs_hamiltonianAllEnergy_2distance']
+        self.output_distanceHamiltonianAllE=\
+            parametersDic_npz['output_distanceHamiltonianAllE']
+        self.plotGraphs_hamiltonianAllEnergy_2distance=\
+            parametersDic_npz['plotGraphs_hamiltonianAllEnergy_2distance']
         
         # ============================
         # Figures Folder
@@ -77,7 +80,8 @@ class plotMain:
         if totFlav == 3:
             labelsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nub_e, nub_mu, nub_tau])
         if totFlav == 4:
-            labelsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
+            labelsArrayFlav= np.array(\
+                [nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
 
         return labelsArrayFlav
     def cdistDiag_Flav(self, totFlav):
@@ -92,7 +96,8 @@ class plotMain:
         if totFlav == 3:
             colorsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nub_e, nub_mu, nub_tau])
         if totFlav == 4:
-            colorsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
+            colorsArrayFlav= np.array(\
+                [nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
 
         return colorsArrayFlav
     def lwdistDiag(self, totFlav):
@@ -107,7 +112,8 @@ class plotMain:
         if totFlav == 3:
             linewidthsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nub_e, nub_mu, nub_tau])
         if totFlav == 4:
-            linewidthsArrayFlav= np.array([nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
+            linewidthsArrayFlav= np.array(\
+                [nu_e, nu_mu, nu_tau, nu_ster, nub_e, nub_mu, nub_tau, nub_ster])
 
         return linewidthsArrayFlav
     # ============================
@@ -129,12 +135,15 @@ class plotMain:
         for it_E in range(self.Emod):
             for it_flav in range(self.totFlav* 2):
                 if self.dim_rho_2totFlav_Bool:
-                    yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll[:, it_E, it_flav, it_flav])
+                    yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll\
+                        [:, it_E, it_flav, it_flav])
                 else:
                     if it_flav < self.totFlav:
-                        yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll[:, 0, it_E, it_flav, it_flav])
+                        yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [:, 0, it_E, it_flav, it_flav])
                     else:
-                        yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll[:, 1, it_E, it_flav% self.totFlav, it_flav% self.totFlav])
+                        yAxises[:, it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [:, 1, it_E, it_flav% self.totFlav, it_flav% self.totFlav])
         
         # Plot
         labelsArrayFlav= self.ldistDiagNu_Flav(self.totFlav)
@@ -153,13 +162,15 @@ class plotMain:
             plt.ylabel('$\\rho_{\\alpha\\alpha}$')
             plt.xlabel('Distance [km]')
             # Save The Graph
-            plt.savefig(FIG_DISTDIAG_PATH+'distDiag_E'+str(int(np.round(self.E_MeV[it_E], decimals=0)))+'MeV.'+self.pltFormat)
+            plt.savefig(FIG_DISTDIAG_PATH+'distDiag_E'\
+                +str(int(np.round(self.E_MeV[it_E], decimals=0)))+'MeV.'+self.pltFormat)
 
             # Clear Figure
             plt.clf()
             plt.close('all')
     # ============================
-    print(tLog.OK+"Diagonal elements of density matrix to distance graph(s) for each energy are created.")
+    print(tLog.OK+"Diagonal elements of density matrix '\
+        'to distance graph(s) for each energy are created.")
     # ============================
     def energyDiag(self):
         # Paths
@@ -179,17 +190,29 @@ class plotMain:
             for it_flav in range(self.totFlav* 2):
                 if self.dim_rho_2totFlav_Bool:
                     # TraceTerm = TraceTermb
-                    yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll[ 0, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
-                    yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll[-1, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
+                    yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll\
+                        [ 0, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
+                    yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll\
+                        [-1, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
                 else:
                     if it_flav < self.totFlav:
                         # Neutrino
-                        yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll[ 0, 0, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
-                        yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll[-1, 0, it_E, it_flav, it_flav])* np.real(self.TraceTerm[it_E])
+                        yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [ 0, 0, it_E, it_flav, it_flav])\
+                            * np.real(self.TraceTerm[it_E])
+                        yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [-1, 0, it_E, it_flav, it_flav])\
+                            * np.real(self.TraceTerm[it_E])
                     else:
                         # Antineutrino
-                        yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll[ 0, 1, it_E, it_flav% self.totFlav, it_flav% self.totFlav])* np.real(self.TraceTermb[it_E])
-                        yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll[-1, 1, it_E, it_flav% self.totFlav, it_flav% self.totFlav])* np.real(self.TraceTermb[it_E])
+                        yAxisesBeg[it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [ 0, 1, it_E, it_flav% self.totFlav\
+                                , it_flav% self.totFlav])\
+                            * np.real(self.TraceTermb[it_E])
+                        yAxisesFin[it_E, it_flav]= np.real(self.rhoFlavAll\
+                            [-1, 1, it_E, it_flav% self.totFlav\
+                                , it_flav% self.totFlav])\
+                            * np.real(self.TraceTermb[it_E])
     
         # Plot
         labelsArrayFlav= self.ldistDiagNu_Flav(self.totFlav)
@@ -217,13 +240,15 @@ class plotMain:
         # Clear Figure
         plt.clf()
         plt.close('all')
-        print(tLog.OK+"Diagonal elements of final density matrix to energy graph(s) are created.")
+        print(tLog.OK+"Diagonal elements of final density'\
+            'matrix to energy graph(s) are created.")
     def distHamiltDiag(self):
         # ============================
         # hamiltonians.npz load
         try:
-            hamiltonians_npz = np.load(self.DATA_PATH+'hamiltonians.npz','r',allow_pickle=True)
-        except:
+            hamiltonians_npz = np.load(self.DATA_PATH+'hamiltonians.npz'\
+                ,'r',allow_pickle=True)
+        except FileNotFoundError:
             print(tLog.ERROR+'File hamiltonians.npz not found.')
             print(tLog.ERROR+'Run hamiltonians.npz creation script.')
             print(tLog.ERROR+'Skip plotting plotGraphs_hamiltonianAllEnergy_2distance.')
@@ -251,7 +276,9 @@ class plotMain:
             # ============================
             # Plot
             for it_E in range(self.Emod):
-                plt.plot(self.distAll_km, np.ones(len(self.distAll_km))*(np.abs(np.real(hamOsc_km_1[it_E, 0, 0])))\
+                plt.plot(self.distAll_km\
+                    , np.ones(len(self.distAll_km))\
+                        *(np.abs(np.real(hamOsc_km_1[it_E, 0, 0])))\
                     , color='r'\
                     , alpha=0.4)
             # Labels
@@ -262,16 +289,20 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
-            print(tLog.OK+"(0,0) elements of oscillation Hamiltonian (km^-1) to distance graph(s) for each energy are created.")
+            print(tLog.OK+"(0,0) elements of oscillation Hamiltonian '\
+                '(km^-1) to distance graph(s) for each energy are created.")
         # ============================
         # Matter Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[1]:
             hamMat_km_1= hamiltonians_npz['hamMat_km_1']
             # Plot
-            plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 0, 0]))), color='k', label='$H_{mat}(1,1)$')
-            plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 1, 1]))), color='r', label='$H_{mat}(2,2)$')
+            plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 0, 0])))\
+                , color='k', label='$H_{mat}(1,1)$')
+            plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 1, 1])))\
+                , color='r', label='$H_{mat}(2,2)$')
             if self.totFlav == 3:
-                plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 2, 2]))), color='b', label='$H_{mat}(3,3)$')
+                plt.plot(self.distAll_km, (np.abs(np.real(hamMat_km_1[:, 2, 2])))\
+                    , color='b', label='$H_{mat}(3,3)$')
             plt.ylabel('$H_{mat}$ [km$^{-1}$]')
             # Labels and legend
             plt.xlabel('Distance [km]')
@@ -281,13 +312,15 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
-            print(tLog.OK+"(0,0), (1,1) elements of matter Hamiltonian (km^-1) to distance graph(s) are created.")
+            print(tLog.OK+"(0,0), (1,1) elements of matter Hamiltonian '\
+                '(km^-1) to distance graph(s) are created.")
         # ============================
         # EM Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[2]:
             hamEM_km_1= hamiltonians_npz['hamEM_km_1']
             # Plot
-            plt.plot(self.distAll_km, (np.abs(np.real(hamEM_km_1[:, 0, -1]))), color='k', label='$\\mu_{\\nu}B$')
+            plt.plot(self.distAll_km, (np.abs(np.real(hamEM_km_1[:, 0, -1])))\
+                , color='k', label='$\\mu_{\\nu}B$')
             plt.ylabel('$\\mu_{\\nu}B$ [km$^{-1}$]')
             # Labels and legend
             plt.xlabel('Distance [km]')
@@ -297,13 +330,15 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
-            print(tLog.OK+"(0,-1) elements of electromagnetic Hamiltonian (km^-1) or muB to distance graph(s) are created.")
+            print(tLog.OK+"(0,-1) elements of electromagnetic Hamiltonian '\
+                '(km^-1) or muB to distance graph(s) are created.")
         # ============================
         # SelfSA Hamiltonian
         if hamBoolAll_OscMatEMSelfSA[3]:
             hamSelfSA_km_1= hamiltonians_npz['hamSelfSA_km_1']
             # Plot
-            plt.plot(self.distAll_km, (np.abs(np.real(hamSelfSA_km_1[:, 0, 0]))), color='k', label='$H_{self}(1,1)$')
+            plt.plot(self.distAll_km, (np.abs(np.real(hamSelfSA_km_1[:, 0, 0])))\
+                , color='k', label='$H_{self}(1,1)$')
             plt.ylabel('$H_{self}(1,1)$ [km$^{-1}$]')
             # Labels and legend
             plt.xlabel('Distance [km]')
@@ -313,5 +348,6 @@ class plotMain:
             # Clear Figure
             plt.clf()
             plt.close('all')
-            print(tLog.OK+"(0,0) elements of self interaction Hamiltonian (km^-1) to distance graph(s) are created.")
+            print(tLog.OK+"(0,0) elements of self interaction Hamiltonian '\
+                '(km^-1) to distance graph(s) are created.")
     # ============================

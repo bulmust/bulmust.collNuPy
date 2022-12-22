@@ -32,7 +32,8 @@ def rhs2Flav_noInterData(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array 
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -41,8 +42,10 @@ def rhs2Flav(rhoAll, dist):
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -53,9 +56,11 @@ def rhs2Flav(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -67,7 +72,8 @@ def rhs2Flav(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -82,7 +88,8 @@ def rhs3Flav_noInterData(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -91,8 +98,10 @@ def rhs3Flav(rhoAll, dist):
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -103,9 +112,11 @@ def rhs3Flav(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -117,7 +128,8 @@ def rhs3Flav(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -132,7 +144,8 @@ def rhs4Flav_noInterData(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -141,8 +154,10 @@ def rhs4Flav(rhoAll, dist):
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -153,9 +168,11 @@ def rhs4Flav(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -167,7 +184,8 @@ def rhs4Flav(rhoAll, dist):
     # For neutrinos     -> totHam[0]
     # For antineutrinos -> totHam[1]
 
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
     return np.array([(-1j)* ((totHamAP[0] @ rhoAll[0])- (rhoAll[0] @ totHamAP[0]))\
         , (-1j)*((totHamAP[1] @ rhoAll[1])- (rhoAll[1] @ totHamAP[1]))]).flatten()
@@ -186,17 +204,20 @@ def rhs2Flav_bigRho_noInterData(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
-
+    
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
 def rhs2Flav_bigRho(rhoAll, dist):
     # ============================
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -207,9 +228,11 @@ def rhs2Flav_bigRho(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -221,7 +244,8 @@ def rhs2Flav_bigRho(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
@@ -236,7 +260,8 @@ def rhs3Flav_bigRho_noInterData(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
@@ -245,8 +270,10 @@ def rhs3Flav_bigRho(rhoAll, dist):
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -257,9 +284,11 @@ def rhs3Flav_bigRho(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -271,7 +300,8 @@ def rhs3Flav_bigRho(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
@@ -286,7 +316,8 @@ def rhs4Flav_bigRho_noInterData(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()
@@ -295,8 +326,10 @@ def rhs4Flav_bigRho(rhoAll, dist):
     # Show intermediate distance and hold the values
     if dist >= init.distTemp:
         # Save to npz file
-        np.savez_compressed('intermediateData/intermediateRhoFlav'+ str(int(np.round(dist, decimals=0)))+ 'km.npz'\
-            , dist_km= dist, rhoAll_flav= rhoAll, dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
+        np.savez_compressed('intermediateData/intermediateRhoFlav'\
+            + str(int(np.round(dist, decimals=0)))+ 'km.npz'\
+            , dist_km= dist, rhoAll_flav= rhoAll\
+            , dim_rho_2totFlav_Bool= init.dim_rho_2totFlav_Bool\
             , technicalParametersDic = init.technicalParametersDic\
             , physicalParametersDic=init.physicalParametersDic)
         
@@ -307,9 +340,11 @@ def rhs4Flav_bigRho(rhoAll, dist):
         currentTimeDate = datetime.datetime.now()
         fileObject = open('distanceAndTime.log','a+')
         # Do not color the [INFO]
-        print('Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
+        print('Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"), file=fileObject)
         fileObject.close()
-        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :', currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
+        print(tLog.INFO+'Current distance is %.7f' % dist, 'km and time :'\
+            , currentTimeDate.strftime("%Y-%m-%d %H:%M:%S"))
     # ============================
     
     # ============================
@@ -321,7 +356,8 @@ def rhs4Flav_bigRho(rhoAll, dist):
     # totHam[N,totFlav:totFlav*2,totFlav:totFlav*2] => Anti-Neutrinos
     # totHam[N,0:totFlav,totFlav:totFlav*2] => Neutrino to Anti-neutrino
     
-    # Note: 3d array + 2d array gives a result that add all 2d array with each element of 3d array
+    # Note: 3d array + 2d array gives a result that add all 2d array with each 
+    # element of 3d array
     # Take Commutator of density and Hamiltonian for each energy
 
     return ((-1j)* ((totHamAP @ rhoAll)- (rhoAll @ totHamAP))).flatten()

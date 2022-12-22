@@ -85,11 +85,13 @@ if __name__ == "__main__":
     # ============================
     if init.technicalParametersDic['output_distanceHamiltonianAllE']:
         # Hamiltonians hamiltonians.npz
-        write2file.hamiltonians_npz(init, DATA_FOLDER_NPZ+'hamiltonians.npz', rhoFlavAll)
+        write2file.hamiltonians_npz(\
+            init, DATA_FOLDER_NPZ+'hamiltonians.npz', rhoFlavAll)
         print(tLog.OK+"Saved: hamiltonians.npz.")
     if init.technicalParametersDic['output_distance_eigenValuesAllE']:
         # Eigenvalues eigenvalues.npz
-        write2file.eigVal_eigVec_npz(init, DATA_FOLDER_NPZ+'eigVal_eigVec.npz', rhoFlavAll)
+        write2file.eigVal_eigVec_npz(\
+            init, DATA_FOLDER_NPZ+'eigVal_eigVec.npz', rhoFlavAll)
         print(tLog.OK+"Saved: eigVal_eigVec.npz.")
     # ============================
 
@@ -111,19 +113,22 @@ if __name__ == "__main__":
         # hamiltonians.txt
         if init.technicalParametersDic['output_distanceHamiltonianAllE']:
             # Hamiltonians hamiltonians.txt
-            write2file.hamiltonians_txt(init, DATA_FOLDER_TXT+'hamiltonians.txt', rhoFlavAll)
+            write2file.hamiltonians_txt(\
+                init, DATA_FOLDER_TXT+'hamiltonians.txt', rhoFlavAll)
             #print(tLog.OK+"Saved: hamiltonians.txt.")
         # ============================
         # eigenvalues.txt
         if init.technicalParametersDic['output_distance_eigenValuesAllE']:
             # Eigenvalues eigenvalues.txt
-            write2file.eigVal_eigVec_txt(init, DATA_FOLDER_TXT+'eigVal_eigVec.txt', rhoFlavAll)
+            write2file.eigVal_eigVec_txt(\
+                init, DATA_FOLDER_TXT+'eigVal_eigVec.txt', rhoFlavAll)
             #print(tLog.OK+"Saved: eigVal_eigVec.txt.")
     # ============================
 
     # ============================
     # Copy background profile file(s)
-    write2file.saveBackgroundProfiles(init, COLLECTIVE_NU_OSC_DIR+'backgroundProfiles/', DATA_FOLDER_NPZ)
+    write2file.saveBackgroundProfiles(\
+        init, COLLECTIVE_NU_OSC_DIR+'backgroundProfiles/', DATA_FOLDER_NPZ)
     # ============================
 
     # ============================

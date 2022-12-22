@@ -3,7 +3,8 @@ import os as osCommand
 import shutil
 
 def listOfFoldersInDirectory(path):
-    return [f for f in osCommand.listdir(path) if osCommand.path.isdir(osCommand.path.join(path, f))]
+    return [f for f in osCommand.listdir(path) \
+        if osCommand.path.isdir(osCommand.path.join(path, f))]
 if __name__ == '__main__':
     # Current directory
     currentDir = osCommand.getcwd()

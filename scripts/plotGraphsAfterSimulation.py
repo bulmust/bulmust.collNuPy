@@ -12,16 +12,16 @@ E-Mail  : bulmust@gmail.com
 """
 # ============================
 import os as osCommand # File operations
-# Current Directory
-currDir = osCommand.getcwd() + "/"
-from pathlib import Path
-# collNuPy main directory
-COLLECTIVE_NU_OSC_DIR= str(Path(currDir).parent)+ "/"
 from sys import path
-# Insert Modules Path
-path.insert(0, COLLECTIVE_NU_OSC_DIR+'modules')
 # Insert plotgraphs.py path
 import plotgraphs as plot
+from pathlib import Path
+# Current Directory
+currDir = osCommand.getcwd() + "/"
+# collNuPy main directory
+COLLECTIVE_NU_OSC_DIR= str(Path(currDir).parent)+ "/"
+# Insert Modules Path
+path.insert(0, COLLECTIVE_NU_OSC_DIR+'modules')
 
 # ============================
 # Colors For Printing
@@ -34,7 +34,8 @@ class tLog:
 # ============================
 
 if __name__ == "__main__":
-    RESULTS_SIMULATION_DIR= COLLECTIVE_NU_OSC_DIR+ 'results/'+ input('Enter the simulation name: ')+'/'
+    RESULTS_SIMULATION_DIR= COLLECTIVE_NU_OSC_DIR+ 'results/'\
+        + input('Enter the simulation name: ')+'/'
     NPZ_FILE_PATH= RESULTS_SIMULATION_DIR+ 'data/rhoFlavAll.npz'
 
     # Try to reach the file
@@ -48,7 +49,8 @@ if __name__ == "__main__":
     print(tLog.INFO+'Choose plot(s): Available plots are following')
     print(tLog.INFO+'1 = distDiag => Diagonal elements of density matrix to distance.')
     print(tLog.INFO+'2 = energyDiag => Diagonal elements of density matrix to energy.')
-    print(tLog.INFO+'3 = distHamiltDiag => Diagonal elements of Hamiltonian to distance.')
+    print(tLog.INFO+\
+        '3 = distHamiltDiag => Diagonal elements of Hamiltonian to distance.')
     print('')
     print(tLog.INFO+'Example: To plot distDiag and distHamiltDiag, enter 13')
     plotCheck= input('Enter the plot numbers: ')

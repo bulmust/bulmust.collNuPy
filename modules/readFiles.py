@@ -4,7 +4,7 @@ Author  : Taygun Bulmus
 E-Mail  : bulmust@gmail.com
 -----
 """
-import numpy as np
+#import numpy as np
 # Colors For Printing
 class tLog:
     INFO  = '\033[94m'+'[INFO]    '+'\033[0m'
@@ -27,7 +27,7 @@ def technicalParameters_read():
         print(tLog.ERROR+'technicalParameters.dat file can not be opened.')
         exit(tLog.EXIT)
 
-  	# Read the Lines
+    # Read the Lines
     fileLines = fileID.readlines()
 
     # ----------------------------------------------------
@@ -50,9 +50,11 @@ def technicalParameters_read():
         'tolerance_absoluteError')
 
     # If parameters' value must be 0 or 1, add their indexes below
-    err01=('holdIntermediateData','plotGraphs','plotGraphs_diagonalRhoAllEnergy_2distance','plotGraphs_diagonalRhoFinal_2energy'\
-        ,'plotGraphs_hamiltonianAllEnergy_2distance'\
-        ,'output_humanReadable','output_distanceHamiltonianAllE', 'output_distance_eigenValuesAllE')
+    err01=('holdIntermediateData','plotGraphs','plotGraphs_diagonalRhoAllEnergy_2distance'
+        , 'plotGraphs_diagonalRhoFinal_2energy'\
+        , 'plotGraphs_hamiltonianAllEnergy_2distance'\
+        , 'output_humanReadable','output_distanceHamiltonianAllE'
+        , 'output_distance_eigenValuesAllE')
 
     # Name of parameters that have string values
     strParams= ('plot_savingFormat', 'initialValueProblem_solverMethod')
@@ -97,7 +99,8 @@ def technicalParameters_read():
 
     # ERROR Contradictions for technicalParameters.dat
     if None in technicalParameters:
-        print(tLog.ERROR+'There is a contradiction between technicalParameters.dat file and technicalParametersNames variable.')
+        print(tLog.ERROR+'There is a contradiction between technicalParameters.dat file'
+            'and technicalParametersNames variable.')
         exit(tLog.EXIT)
 
     # Create Dictionary
@@ -108,7 +111,8 @@ def technicalParameters_read():
     
     # ERROR Bool Values for technicalParameters
     for i2 in range(len(err01)):
-        if technicalParametersDic[err01[i2]] != 1.0 and technicalParametersDic[err01[i2]] != 0.0:
+        if technicalParametersDic[err01[i2]] != 1.0\
+            and technicalParametersDic[err01[i2]] != 0.0:
             print(tLog.ERROR+'Invalid number for '+technicalParametersNames[i2]+'.')
             exit(tLog.EXIT)
         else:
@@ -147,7 +151,7 @@ def physicalParameters_read():
         print(tLog.ERROR+'physicalParameters.dat file can not be opened.')
         exit(tLog.EXIT)
 
-  	# Read the Lines
+    # Read the Lines
     fileLines = fileID.readlines()
 
     # ----------------------------------------------------
@@ -212,14 +216,16 @@ def physicalParameters_read():
 
     # If parameters' value must be 0 or 1, add their indexes below
     err01=('hamiltonian_oscillation','hamiltonian_matter','hamiltonian_selfInteraction_singleAngle'\
-        ,'hamiltonian_electromagnetic', 'use_defaultMatterProfile', 'use_defaultMagneticProfile')
+        , 'hamiltonian_electromagnetic', 'use_defaultMatterProfile'\
+        , 'use_defaultMagneticProfile')
 
     # Name of parameters that have string values
     strParams= ('matterProfile_fileName', 'magneticField_fileName')
 
     # Parameters that must be integer values
-    intParams= ('flavor_number', 'neutrino_hierarchy', 'numberOf_energyMode', 'neutrino_distributionParameter'\
-        ,'matterDensity_profile', 'magneticField_profile')
+    intParams= ('flavor_number', 'neutrino_hierarchy', 'numberOf_energyMode'\
+        , 'neutrino_distributionParameter'\
+        , 'matterDensity_profile', 'magneticField_profile')
 
     # Variable Length
     physicalParametersNamesLen=len(physicalParametersNames)
@@ -250,7 +256,9 @@ def physicalParameters_read():
                                 int(fileLines[line].lstrip()[eqSigIND+1:commentIND])
                             except ValueError:
                                 # ERROR If RHS is not a integer number
-                                print(tLog.ERROR+'The value of '+fileLines[line].lstrip()[0:eqSigIND]+' must be an integer.')
+                                print(tLog.ERROR+'The value of '\
+                                    + fileLines[line].lstrip()[0:eqSigIND]\
+                                    + ' must be an integer.')
                                 exit(tLog.EXIT)
                             physicalParameters[physicalParametersNames.index(fileLines[line].lstrip()[0:eqSigIND])]=int(fileLines[line].lstrip()[eqSigIND+1:commentIND])
                             
@@ -271,7 +279,8 @@ def physicalParameters_read():
     # ERROR Contradictions
     if None in physicalParameters:
         print(physicalParameters)
-        print(tLog.ERROR+'There is a contradiction between ''physicalParameters.dat file and physicalParametersNames variable.')
+        print(tLog.ERROR+'There is a contradiction between'\
+            'physicalParameters.dat file and physicalParametersNames variable.')
         exit(tLog.EXIT)
 
     # Create Dictionary
@@ -284,7 +293,8 @@ def physicalParameters_read():
     # ERROR Bool Values for physicalParameters
     # 0 or 1 Values
     for i2 in range(len(err01)):
-        if physicalParametersDic[err01[i2]] != 1.0 and physicalParametersDic[err01[i2]] != 0.0:
+        if physicalParametersDic[err01[i2]] != 1.0\
+            and physicalParametersDic[err01[i2]] != 0.0:
             print(tLog.ERROR+'Invalid number for '+physicalParametersNames[i2]+'.')
             exit(tLog.EXIT)
         else:
@@ -328,7 +338,8 @@ def physicalParameters_read():
         else:
             del physicalParametersDic['matterProfile_fileName']
             # ERROR Invalid value for electron fraction
-            if (physicalParametersDic['electronFraction_constant'] > 1.0 or physicalParametersDic['electronFraction_constant'] < 0):
+            if (physicalParametersDic['electronFraction_constant'] > 1.0\
+                or physicalParametersDic['electronFraction_constant'] < 0):
                 print(tLog.ERROR+'Invalid value for electronFraction_constant.')
                 exit(tLog.EXIT)
 
@@ -411,7 +422,8 @@ def physicalParameters_read():
         del physicalParametersDic['luminosity_mu']
         del physicalParametersDic['luminosity_eb']
         del physicalParametersDic['luminosity_mub']        
-        if physicalParametersDic['flavor_number'] != 2 and physicalParametersDic['flavor_number'] != 3:
+        if physicalParametersDic['flavor_number'] != 2\
+            and physicalParametersDic['flavor_number'] != 3:
             del physicalParametersDic['luminosity_tau']
             del physicalParametersDic['luminosity_taub']
             del physicalParametersDic['luminosity_sterile']

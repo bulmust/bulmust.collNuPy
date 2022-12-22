@@ -13,9 +13,9 @@ E-Mail  : bulmust@gmail.com
 import numpy as np
 import random
 import os as osCommand # File operations
+from pathlib import Path
 # Current Directory
 currDir = osCommand.getcwd() + "/"
-from pathlib import Path
 # collNuPy main directory
 COLLECTIVE_NU_OSC_DIR= str(Path(currDir).parent)+ "/"
 
@@ -60,9 +60,10 @@ if __name__ =='__main__':
     # Start Doing The Simulation
     for it_do in range(Emod):
         # ============================
-        # Modify New ri_km and magneticField_polynomialDecayDistance in physicalParameters.dat
+        # Modify New ri_km and magneticField_polynomialDecayDistance 
+        # in physicalParameters.dat
         file= open(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat', 'r')
-        fileWrite= open(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters2.dat', 'w')
+        fileWrite= open(COLLECTIVE_NU_OSC_DIR+'parameters/physicalParameters2.dat', 'w')
         for line in file.readlines():
             # Energy
             if (line.startswith('numberOf_energyMode')):
@@ -80,7 +81,10 @@ if __name__ =='__main__':
                 fileWrite.write(line)
             # magneticField_polynomialDecayDistance
             elif (line.startswith('magneticField_polynomialDecayDistance')):
-                line= 'magneticField_polynomialDecayDistance='+ str(magneticField_polynomialDecayDistance[it_do])+ ' # [km] Valid for (use_defaultMagneticProfile=1, magneticField_profile=2)\n'
+                line= 'magneticField_polynomialDecayDistance='\
+                    + str(magneticField_polynomialDecayDistance[it_do])\
+                    +' # [km] Valid for (use_defaultMagneticProfile=1'\
+                    ', magneticField_profile=2)\n'
                 fileWrite.write(line)
             else:
                 fileWrite.write(line)
@@ -88,7 +92,8 @@ if __name__ =='__main__':
         fileWrite.close()
         # Remove and Rename
         osCommand.remove(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
-        osCommand.rename(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters2.dat', COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
+        osCommand.rename(COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters2.dat'\
+            , COLLECTIVE_NU_OSC_DIR+ 'parameters/physicalParameters.dat')
         # ============================
         osCommand.chdir(COLLECTIVE_NU_OSC_DIR)
         #! ============================
