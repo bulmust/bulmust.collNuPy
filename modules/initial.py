@@ -100,15 +100,15 @@ E_MeV= np.zeros([int(Emod)])
 luminosityArray_MeV_km= np.zeros(2*totFlav)
 tempArray_MeV= np.zeros(2*totFlav)
 # Distribution Matrices
-distributionInit_nu_flav = np.zeros((Emod, totFlav, totFlav), dtype=complex)
-distributionInit_nub_flav= np.zeros((Emod, totFlav, totFlav), dtype=complex)
-rho= np.zeros((Emod, totFlav, totFlav), dtype=complex)
-rhob= np.zeros((Emod, totFlav, totFlav), dtype=complex)
+distributionInit_nu_flav = np.zeros((Emod, totFlav, totFlav), dtype=np.complex128)
+distributionInit_nub_flav= np.zeros((Emod, totFlav, totFlav), dtype=np.complex128)
+rho= np.zeros((Emod, totFlav, totFlav), dtype=np.complex128)
+rhob= np.zeros((Emod, totFlav, totFlav), dtype=np.complex128)
 # TraceTerm [MeV^-1 * km^-3]
 # Trace terms that should multiply to self interaction Hamiltonian
 #   \sum_alpha[ (L_alpha/<E_alpha>)*f_alpha*(1/2*np.pi*SN_R**2) ]
-TraceTerm  = np.zeros(Emod, dtype= np.complex)
-TraceTermb = np.zeros(Emod, dtype= np.complex)
+TraceTerm  = np.zeros(Emod, dtype= np.complex128)
+TraceTermb = np.zeros(Emod, dtype= np.complex128)
 # ============================
 
 # ============================
@@ -126,7 +126,7 @@ if dim_rho_2totFlav_Bool:
 else:
     # dimRhoMat = (neutrino/antineutrino) x (flavor) x (flavor))
     dimRhoMat= (2, Emod, totFlav, totFlav)
-rhoInit_flav= np.zeros(dimRhoMat, dtype=complex)
+rhoInit_flav= np.zeros(dimRhoMat, dtype=np.complex128)
 # ============================
 
 # ============================
@@ -400,7 +400,8 @@ for i2 in range(Emod):
                 rhob[i2, 1, 1] = 1
         elif physicalParametersDic['neutrino_distributionParameter'] == 5:
             # Sterile neutrinos values are set to zero
-            # Sterile neutrinos are always assumed to be at the end of the array
+            # Sterile neutrinos are always assumed to be at the end of the 
+            # array
             if i3 != totFlav-1:
                 # Active Fermi-Dirac [1/MeV], Sterile Zero Distribution
                 distributionInit_nu_flav[i2, i3, i3] = (1 / (1.803\
@@ -421,11 +422,11 @@ for i2 in range(Emod):
             # Only Electron Box Distribution (Not ebar) [Dimensionless]
             distributionInit_nu_flav[i2, 0, 0] = 1
             if hamSelfSA:
-                rho[i2, 0, 0]= (1 / (4 * (ri_km**2) * np.pi**2))\
-                    * distributionInit_nu_flav[i2,0, 0]\
+                rho[i2, 0, 0] = (1 / (4 * (ri_km**2) * np.pi**2))\
+                    * distributionInit_nu_flav[i2, 0, 0]\
                     * luminosityArray_MeV_km[i3] / E_MeV[i2]
             else:
-                rho[i2, 0, 0]= 1
+                rho[i2, 0, 0] = 1
         elif physicalParametersDic['neutrino_distributionParameter'] == 7:
             # Only Electron Box Distribution (Not ebar) [Dimensionless]
             distributionInit_nu_flav[i2, 0, 0] = 1
@@ -452,8 +453,8 @@ for i2 in range(Emod):
         rhob[i2] = rhob[i2] / TraceTermb[i2]
     
         # Set Initial Density Matrix
-        rhoInit_flav[:, 0:totFlav, 0:totFlav]= rho[i2]
-        rhoInit_flav[:, totFlav:totFlav* 2, totFlav:totFlav* 2]= rhob[i2]
+        rhoInit_flav[i2, 0:totFlav, 0:totFlav]= rho[i2]
+        rhoInit_flav[i2, totFlav:totFlav* 2, totFlav:totFlav* 2]= rhob[i2]
     else:
         TraceTerm[i2]  = np.trace(rho[i2])
         TraceTermb[i2] = np.trace(rhob[i2])

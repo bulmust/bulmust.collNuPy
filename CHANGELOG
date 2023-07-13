@@ -1,5 +1,10 @@
 # v1.2.1
 - Linting.
+- Change complex dtype definitions (numpy deprecation)
+- Debugging `initial.py`. Wrong initial energy spectrum.
+- Adding parameter explanations `parameters/paramExplanations.md`.
+- Adding extra indices to `run_random_ri_magPolDecDist.py` script.
+- Modify `scripts/slurmTRUBA/submitTRUBA_run_random_ri_magPolDecDist.sh` script w.r.t. new indices.
 
 # v1.2
 - Spell check.

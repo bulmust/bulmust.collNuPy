@@ -211,8 +211,8 @@ def analyzeAllResults():
     # ============================
     # Similar for all simulations
     # First Data Load
-    DATA_DIR= RESULTS_DIR+'simulation1/data/'
-    DATA_rhoFlavAll= np.load(DATA_DIR+'rhoFlavAll.npz', allow_pickle=True)
+    DATA_DIR = RESULTS_DIR + 'simulation1/data/'
+    DATA_rhoFlavAll = np.load(DATA_DIR + 'rhoFlavAll.npz', allow_pickle=True)
     #DATA_hamiltonians= np.load(DATA_DIR+'hamiltonians.npz', allow_pickle=True)
     DATA_parametersDic= np.load(DATA_DIR+'parametersDic.npz', allow_pickle=True)
     #print(DATA_parametersDic.files); exit()
@@ -251,37 +251,38 @@ def analyzeAllResults():
     # Combine all the results
     for it_sim in range(1, noOfSim+1):
         # ============================
-        DATA_DIR          = RESULTS_DIR+'simulation'+str(it_sim)+'/data/'
-        DATA_rhoFlavAll   = np.load(DATA_DIR+'rhoFlavAll.npz', allow_pickle=True)
-        #DATA_hamiltonians = np.load(DATA_DIR+'hamiltonians.npz', allow_pickle=True)
+        DATA_DIR = RESULTS_DIR+'simulation'+str(it_sim)+'/data/'
+        DATA_rhoFlavAll =\
+            np.load(DATA_DIR+'rhoFlavAll.npz', allow_pickle=True)
+        # DATA_hamiltonians = \
+        # np.load(DATA_DIR+'hamiltonians.npz', allow_pickle=True)
         if use_defaultMatterProfile:
             exit(tLog.ERROR+'use_defaultMatterProfile is True.')
         # ============================
-        
         # ============================
         # Load Variables
-        E_MeV[it_sim-1]= DATA_rhoFlavAll['E_MeV']
-        print(tLog.INFO+ 'Energy='+str(E_MeV[it_sim-1]) +' MeV is starting.')
+        E_MeV[it_sim-1] = DATA_rhoFlavAll['E_MeV']
+        print(tLog.INFO + 'Energy='+str(E_MeV[it_sim-1]) + ' MeV is starting.')
         rhoFlavAll = DATA_rhoFlavAll['rhoFlavAll']
         distAll_km = DATA_rhoFlavAll['distAll_km']
-        #hamOsc_km_1= DATA_hamiltonians['hamOsc_km_1']
-        #hamMat_km_1= DATA_hamiltonians['hamMat_km_1']
-        #hamEM_km_1 = DATA_hamiltonians['hamEM_km_1']
-        #hamTot_km_1= DATA_hamiltonians['hamTot_km_1']
-        #Vcc_km_1= np.real(hamMat_km_1[:,0,0]- hamMat_km_1[:,1,1])
-        #Vnc_km_1= np.real(hamMat_km_1[:,1,1])
-        #muB_km_1= hamEM_km_1[:,0,-1]
+        # hamOsc_km_1= DATA_hamiltonians['hamOsc_km_1']
+        # hamMat_km_1= DATA_hamiltonians['hamMat_km_1']
+        # hamEM_km_1 = DATA_hamiltonians['hamEM_km_1']
+        # hamTot_km_1= DATA_hamiltonians['hamTot_km_1']
+        # Vcc_km_1= np.real(hamMat_km_1[:,0,0]- hamMat_km_1[:,1,1])
+        # Vnc_km_1= np.real(hamMat_km_1[:,1,1])
+        # muB_km_1= hamEM_km_1[:,0,-1]
         # ============================
 
         # ============================
-        #r_resMSWs_km_idx, r_resMSWs_km, adiabaticity_MSW, P_LZ_MSW_tmpArray=\
-        #    mswResonanceVariablesCreate(hierarchy, E_MeV[it_sim-1], distAll_km\
-        #    , deltaMsqr_MeV2, theta, Vcc_km_1, Vnc_km_1, hamTot_km_1)
-        #print(tLog.INFO+ '============================')
-        #r_resSFP_km_idx, r_resSFP_km, adiabaticity_SFP, P_LZ_SFP=\
-        #    sfpResonanceVariables(hierarchy, E_MeV[it_sim-1], distAll_km\
-        #    , deltaMsqr_MeV2, Vcc_km_1, Vnc_km_1, muB_km_1, hamTot_km_1)
-        #print(tLog.INFO+ '============================\n')
+        # r_resMSWs_km_idx, r_resMSWs_km, adiabaticity_MSW, P_LZ_MSW_tmpArray=\
+        # mswResonanceVariablesCreate(hierarchy, E_MeV[it_sim-1], distAll_km\
+        # , deltaMsqr_MeV2, theta, Vcc_km_1, Vnc_km_1, hamTot_km_1)
+        # print(tLog.INFO+ '============================')
+        # r_resSFP_km_idx, r_resSFP_km, adiabaticity_SFP, P_LZ_SFP=\
+        # sfpResonanceVariables(hierarchy, E_MeV[it_sim-1], distAll_km\
+        # , deltaMsqr_MeV2, Vcc_km_1, Vnc_km_1, muB_km_1, hamTot_km_1)
+        # print(tLog.INFO+ '============================\n')
         # ============================
 
         # ============================

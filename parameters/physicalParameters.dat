@@ -1,5 +1,5 @@
 # ==============================================================================
-# !! Descriptions are at the end of document !!
+# !! Descriptions are in paramExplanations.md file !!
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -31,15 +31,15 @@ deltaM_square41=0         # [MeV^2] Valid for (flavor_number=4)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-neutrino_MagneticMoment=5e-14 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
+neutrino_MagneticMoment=5e-15 # [Bohr Magneton] Valid for (hamiltonian_electromagnetic=1)
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-numberOf_energyMode=21             # Valid for only integer
-energy_initial=1.0                 # [MeV]
-energy_final=20.0                  # [MeV]
-distance_initial=50                # [km]
-distance_final=200                 # [km]
+numberOf_energyMode=500            # Valid for only integer
+energy_initial=0.2                 # [MeV]
+energy_final=100.0                 # [MeV]
+distance_initial=49.95                # [km]
+distance_final=70000               # [km]
 neutrino_distributionParameter=1 # Valid only (1,2,3,4,5,6,7), For profiles see below
 # ------------------------------------------------------------------------------
 
@@ -96,32 +96,3 @@ magneticField_fileName=magneticField_profile.dat # Valid for (use_defaultMagneti
 # ------------------------------------------------------------------------------
 couplingConstant_sterile=1 # [Fermi_Constant] Valid for (flavor_number=4, hamiltonian_selfInteraction_singleAngle=1)
 # ------------------------------------------------------------------------------
-
-# ==============================================================================
-#  !!!!!!!!!!!!!!!!!!!!!!
-#  WARNINGS
-#  - Lines starting with "#" are ignored.
-#  - The format is "label=value".
-#  - Some parameters are valid for only specific values! Look descriptions.
-#  - Use 1.2e+4 format instead of 1.2*1e+4.
-#  - If you want to add a new Parameter, add the parameter name into readFiles.py.
-#  - For two flavor, code does not consider some variables. Look descriptions.
-#  - Use dot (.) for decimal, not comma (,).
-#  !!!!!!!!!!!!!!!!!!!!
-#
-#  -----------------------------------------------------------------------------
-#  neutrino_distributionParameter : Normalized Neutrino Densities Parameter
-#   - Valid only 1 || 2 || 3 || 4 || 5 || 6 || 7
-#   - For 1 || 2 => \rho = (Distribution x (L/E) x (1/(4\pi^2 SN_R^{2})))/ (Diagonal_Term)
-#   - For 1 || 2 => Diagonal_Term is for normalization.
-#   - For 2 => alpha = 3
-#
-#  [1] Fermi-Dirac  [1/MeV] : (1/(T^3))*(1/F2)*(E^2/(1+exp(E/T))) [Duan:2006an]
-#  [2] Pinched      [1/MeV] : (((alpha+1)/<E>)^alpha)*(E^alpha/Gamma(alpha+1))*exp(-(alpha+1)*E/<E>) [Keil:2002in]
-#  [3] eBox         []      : Electron neutrino and electron antineutrino box spectrum
-#  [4] muBox        []      : Muon neutrino and muon antineutrino box spectrum
-#  [5] Fermi, Zero  [1/MeV] : Actives: Fermi-Dirac Dist., Sterile: Zero
-#  [6] Only eBox    []      : Electron neutrino box spectrum
-#  [7] Only ebarBox []      : Anti Electron neutrino box spectrum
-#  -----------------------------------------------------------------------------
-# ==============================================================================

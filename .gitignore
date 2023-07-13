@@ -7,3 +7,6 @@ backgroundProfiles/
 tmp/
 results/
 snSimulations/
+
+# slurmTRUBA personal config
+slurmTRUBA_personal/

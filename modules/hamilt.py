@@ -50,7 +50,7 @@ if init.hamOsc:
                 (MeV_TO_km_1 / (6.0 * init.E_MeV[i2]))* (init.U_mix @\
                 np.array([[-init.dMSqr21_MeV2 - dMSqr31_MeV2, 0, 0]\
                         , [0, init.dMSqr21_MeV2 - init.dMSqr32Hi_MeV2, 0]\
-                        , [0, 0, dMSqr31_MeV2 + init.dMSqr32Hi_MeV2] ], dtype=complex)@\
+                        , [0, 0, dMSqr31_MeV2 + init.dMSqr32Hi_MeV2] ], dtype=np.complex128)@\
                 np.conjugate(np.transpose(init.U_mix)))
     # ============================
     # Four Flavor
@@ -73,7 +73,7 @@ if init.hamOsc:
                 , [0, init.dMSqr21_MeV2- init.dMSqr32Hi_MeV2- dMSqr42_MeV2, 0, 0]\
                 , [0, 0, dMSqr31_MeV2 + init.dMSqr32Hi_MeV2- dMSqr43_MeV2, 0    ]\
                 , [0, 0, 0, init.dMSqr41_MeV2+ dMSqr42_MeV2+ dMSqr43_MeV2       ]]\
-                , dtype=complex)@\
+                , dtype=np.complex128)@\
                 np.conjugate(np.transpose(init.U_mix)))
     # ============================
     # If Majorana Interaction is used

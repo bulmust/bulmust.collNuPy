@@ -4,9 +4,9 @@
 module load centos7.3/comp/python/3.6.5-gcc
 
 # User Name
-USR_NAM="ibulmus"
+USR_NAM=""
 # User Email
-USR_EMAIL="taygun.bulmus@msgsu.edu.tr"
+USR_EMAIL=""
 
 # Simulation Name (Also Job Name)
 # if no arguments are given, print usage

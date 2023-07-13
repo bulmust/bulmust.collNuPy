@@ -4,9 +4,9 @@
 module load centos7.3/comp/python/3.6.5-gcc
 
 # User Name
-USR_NAM="ibulmus"
+USR_NAM=""
 # User Email
-USR_EMAIL="taygun.bulmus@msgsu.edu.tr"
+USR_EMAIL=""
 
 # ----------------------------
 # Argument Check
@@ -14,7 +14,7 @@ SIM_NAM=$1
 # if no arguments are given, print usage
 if [ $# -eq 0 ]; then
     echo "Argument is missing, please give initial energy <Simulation Name> as first argument."
-    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE>"
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
     exit 0
 fi
 
@@ -23,7 +23,7 @@ Ei_MeV=$2
 # If $2 is missing, exit
 if [ -z "$Ei_MeV" ]; then
     echo "Argument is missing, please give initial energy <Ei_MeV> as second argument."
-    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE>"
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
     exit 0
 fi
 
@@ -32,7 +32,7 @@ Ef_MeV=$3
 # If $3 is missing, exit
 if [ -z "$Ef_MeV" ]; then
     echo "Argument is missing, please give final energy <Ef_MeV> as third argument."
-    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE>"
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
     exit 0
 fi
 
@@ -41,7 +41,7 @@ Emod=$4
 # If $4 is missing, exit
 if [ -z "$Emod" ]; then
     echo "Argument is missing, please give number of energy points as <Emod> fourth argument."
-    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE>"
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
     exit 0
 fi
 
@@ -50,11 +50,71 @@ Emod_EachE=$5
 # If $5 is missing, exit
 if [ -z "$Emod_EachE" ]; then
     echo "Argument is missing, please give number of energy mod for each energy as <Emod_EachE> fifth argument."
-    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE>"
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
+    exit 0
+fi
+
+# Sixth Argument is Number of energy mod for each energy distance_initial_initial
+distance_initial_initial=$6
+# If $6 is missing, exit
+if [ -z $distance_initial_initial]; then
+    echo "Argument is missing, <distance_initial_initial> sixth argument."
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
+    exit 0
+fi
+
+# Seventh Argument is Number of energy mod for each energy distance_initial_final
+distance_initial_final=$7
+# If $7 is missing, exit
+if [ -z $distance_initial_final]; then
+    echo "Argument is missing, <distance_initial_final> seventh argument."
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
+    exit 0
+fi
+
+# Eighth Argument is Number of energy mod for each energy magneticField_polynomialDecayDistance_initial
+magneticField_polynomialDecayDistance_initial=$8
+# If $8 is missing, exit
+if [ -z $magneticField_polynomialDecayDistance_initial]; then
+    echo "Argument is missing, <magneticField_polynomialDecayDistance_initial> eighth argument."
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
+    exit 0
+fi
+
+# Ninth Argument is Number of energy mod for each energy magneticField_polynomialDecayDistance_final
+magneticField_polynomialDecayDistance_final=$9
+# If $9 is missing, exit
+if [ -z $magneticField_polynomialDecayDistance_final]; then
+    echo "Argument is missing, <magneticField_polynomialDecayDistance_final> ninth argument."
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
+    exit 0
+fi
+
+# Tenth Argument is Number of energy mod for each energy randomizingRmagR
+randomizingRmagR=${10}
+# If ${10} is missing, exit
+if [ -z $randomizingRmagR]; then
+    echo "Argument is missing, <randomizingRmagR> tenth argument."
+    echo "Usage: $0 <Simulation Name> <Ei_MeV> <Ef_MeV> <Emod> <Emod_EachE> <distance_initial_initial> <distance_initial_final> <magneticField_polynomialDecayDistance_initial> <magneticField_polynomialDecayDistance_final> <randomizingRmagR>"
     exit 0
 fi
 # ----------------------------
 
+# ----------------------------
+# Printing All Arguments
+echo "Simulation Name: $SIM_NAM"
+echo "Initial Energy: $Ei_MeV MeV"
+echo "Final Energy: $Ef_MeV MeV"
+echo "Number of Energy Points: $Emod"
+echo "Number of energy mod for each energy: $Emod_EachE"
+echo "distance_initial_initial: $distance_initial_initial"
+echo "distance_initial_final: $distance_initial_final"
+echo "magneticField_polynomialDecayDistance_initial: $magneticField_polynomialDecayDistance_initial"
+echo "magneticField_polynomialDecayDistance_final: $magneticField_polynomialDecayDistance_final"
+echo "Take Random R and Rmag: $randomizingRmagR"
+# ----------------------------
+
+# ----------------------------
 # Orjinal Code Directory
 ORJ_DIR="/truba/home/${USR_NAM}/collNuPy"
 # Code Dir in Scratch
@@ -74,7 +134,10 @@ cd ${WORK_DIR}
 
 # slurm file location
 SLURM_FILE="${WORK_DIR}/collnu_${SIM_NAM}.slurm"
+# ----------------------------
 
+# ----------------------------
+# Create slurm file
 echo "#!/bin/bash
 
 #SBATCH --job-name=${SIM_NAM}    # Job name
@@ -102,7 +165,7 @@ echo '======================================================'
 cd ${WORK_DIR}/scripts/random_ri_magPolDecDist/
 
 # Run code
-python3.6 run_random_ri_magPolDecDist.py -i ${Ei_MeV} -f ${Ef_MeV} -m ${Emod} -b ${Emod_EachE}
+python3.6 run_random_ri_magPolDecDist.py -i ${Ei_MeV} -f ${Ef_MeV} -m ${Emod} -b ${Emod_EachE} -t ${distance_initial_initial} -y ${distance_initial_final} -u ${magneticField_polynomialDecayDistance_initial} -k ${magneticField_polynomialDecayDistance_final} -r ${randomizingRmagR}
 
 # Time limit for levrek cluster
 # Kuyruklar (Partitions)
@@ -124,3 +187,4 @@ sbatch $SLURM_FILE
 
 # Create Backup at Home
 cp -r ${WORK_DIR} ${HOME}
+# ----------------------------
